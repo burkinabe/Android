@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/llMainHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimary"
+            android:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:src="@mipmap/back_ic" />
+
+            <com.accurascandemo.view.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Contact Us"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/seventeen"
+                app:typeface="ALLER_STD_REG" />
+
+        </android.support.v7.widget.Toolbar>
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="30dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/logo_loign" />
+
+            <com.accurascandemo.view.CustomEditText
+                android:id="@+id/etCompanyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="@dimen/ten"
+                android:background="@drawable/fill_round_rect"
+                android:drawableLeft="@mipmap/fill_ic_company_name"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:hint="COMPANY NAME"
+                android:imeOptions="actionNext"
+                android:inputType="text|textCapWords"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/fifteen"
+                app:typeface="ALLER_STD_REG" />
+
+            <com.accurascandemo.view.CustomEditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="@dimen/ten"
+                android:background="@drawable/fill_round_rect"
+                android:drawableLeft="@mipmap/fill_ic_name"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:hint="NAME"
+                android:imeOptions="actionNext"
+                android:inputType="text|textCapWords"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/fifteen"
+                app:typeface="ALLER_STD_REG" />
+
+            <com.accurascandemo.view.CustomEditText
+                android:id="@+id/etEmailId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="@dimen/ten"
+                android:background="@drawable/fill_round_rect"
+                android:drawableLeft="@mipmap/fill_ic_email"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:hint="@string/emailId"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/fifteen"
+                app:typeface="ALLER_STD_REG" />
+
+            <com.accurascandemo.view.CustomEditText
+                android:id="@+id/etCell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="@dimen/ten"
+                android:background="@drawable/fill_round_rect"
+                android:digits="0123456789"
+                android:drawableLeft="@mipmap/fill_ic_cell"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:hint="CELL"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/fifteen"
+                app:typeface="ALLER_STD_REG" />
+
+            <com.accurascandemo.view.CustomTextView
+                android:id="@+id/etCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="@dimen/ten"
+                android:background="@drawable/fill_round_rect"
+                android:drawableLeft="@mipmap/fill_ic_country"
+                android:drawablePadding="8dp"
+                android:drawableRight="@mipmap/fill_ic_dd_arrow"
+                android:gravity="center_vertical"
+                android:hint="COUNTRY"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/fifteen"
+                app:typeface="ALLER_STD_REG" />
+
+
+            <com.accurascandemo.view.CustomEditText
+                android:id="@+id/etMessage"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="@dimen/ten"
+                android:background="@drawable/fill_round_rect"
+                android:gravity="left"
+                android:hint="LEAVE YOUR MESSAGE"
+                android:inputType="textMultiLine"
+                android:maxLines="3"
+                android:padding="10dp"
+                android:scrollbars="vertical"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/fifteen"
+                app:typeface="ALLER_STD_REG" />
+
+            <com.accurascandemo.view.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="10dp"
+                android:text="@string/text_contact_str"
+                android:textSize="@dimen/fifteen" />
+
+            <com.accurascandemo.view.CustomTextView
+                android:id="@+id/tvSend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="@dimen/fifteen"
+                android:background="@drawable/round_border_rect"
+                android:gravity="center"
+                android:text="Send"
+                android:textColor="@color/white"
+                android:textSize="@dimen/fifteen"
+                app:typeface="ALLER_STD" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

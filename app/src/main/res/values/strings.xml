@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!-- Dialog "OK" button. Dismisses dialog. -->
+    <string name="dialog_ok">OK</string>
+
+    <!-- message for the dialog showing the error of camera hardware -->
+    <string name="cannot_connect_camera">Can\'t connect to the camera.</string>
+
+    <!-- message for the dialog showing the camera is disabled because of security policies. Camera cannot be used. -->
+    <string name="camera_disabled">Camera has been disabled because of security policies.</string>
+
+    <string name="tips">"Hold card here.\nIt will scan actomatically."</string>
+    <string name="card_details">Passport Info</string>
+
+    api
+    <string name="app_name">Accura Scan</string>
+    <string name="ok">Ok</string>
+
+    <string name="base_zoom">https://api.zoomauth.com/api/v1/biometrics/</string>
+    <!--<string name="base_zoom">https://accurascan.com/dev_v1/biometrics/</string>-->
+    <string name="base">https://accurascan.com/dev_v1/</string>
+    <string name="header_key">ApiKey</string>
+    <string name="header_key_new">Api-Key</string>
+    <string name="header_key_zoom">X-App-Token</string>
+
+    <string name="status_code_error">401</string>
+
+    <string name="key_status_code">error</string>
+    <string name="key_message">message</string>
+
+    <string name="err_network">No network connection!</string>
+    <string name="err_something_wrong">Something went wrong. Please try again later.</string>
+
+    <!--Postfix Url-->
+
+    <!--Login Param-->
+    <string name="header_default_key">Qtm@1234</string>
+    <string name="api">https://accurascan.com/v2/api</string>
+    <string name="enrollment_delete">enrollment/%s</string>
+    <string name="authenticate">authenticate</string>
+    <string name="liveness_api">liveness</string>
+    <string name="savecardrecdata">api/savecardrecdata</string>
+
+    <!--Login Screen-->
+    <string name="lastName">Last Name</string>
+    <string name="firstName">First Name</string>
+    <string name="documentNo">Document No</string>
+    <string name="document">Document</string>
+    <string name="country">Country</string>
+    <string name="gender">Sex</string>
+    <string name="dateOfBirth">Date Of Birth</string>
+    <string name="dateOfIssue">Date Of Issue</string>
+    <string name="dateOfExpiry">Date Of Expiry</string>
+
+    <string name="text_female">Female</string>
+    <string name="text_male">Male</string>
+
+    <string name="text_export_data_caps">EXPORT DATA</string>
+    <string name="text_contact_us">CONTACT US</string>
+    <string name="save">Save</string>
+
+    <string name="accura_ocr">ACCURA OCR</string>
+    <string name="accura_ocr_desp"><![CDATA[Recognizes Passport & ID MRZ. Pan & Aadhaar Cards India, USA DL and All Barcodes. Works Ofﬂine]]></string>
+    <string name="accura_face">ACCURA FACE MATCH</string>
+    <string name="accura_face_desp"><![CDATA[AI & ML Based Powerful Face Detection & Recognition Solution. 1:1 and 1:N. Works Ofﬂine]]></string>
+    <string name="accura_scan">ACCURA SCAN</string>
+    <string name="accura_scan_desp"><![CDATA[eKYC and Digital Customer On-Boarding & Real Time Face Biometrics with Zoom Certified Liveness Detection for Real Time User Authentication]]></string>
+    <string name="accura_upload">Upload Face Image</string>
+    <string name="accura_help"><![CDATA[Available in Mobile and Web SDK / API \n Try it now]]></string>
+
+    <string name="text_accura_scan">ACCURA SCAN</string>
+
+    <string name="text_scan_doc">Scan Document</string>
+    <string name="text_place_doc">PLACE THE DOCUMENT LIKE THIS</string>
+    <string name="text_start_scanning">Start Scanning</string>
+    <string name="mrz">MRZ</string>
+    <string name="correct_mrz">Correct Mrz</string>
+    <string name="incorrect_mrz">Incorrect Mrz</string>
+    <string name="launch_screen">Launch screen</string>
+    <string name="passport_id"><![CDATA[Passport & ID MRZ]]></string>
+    <string name="driving_license">USA Driving License</string>
+    <string name="barcode"><![CDATA[Barcode & PDF417]]></string>
+    <string name="pan_card">Pan Card India</string>
+    <string name="aadhaar_card">Aadhaar Card India</string>
+    <string name="text_pan_doc">PLACE TAKE PICTURE OF YOUR PAN CARD</string>
+    <string name="text_aadhaar_doc">PLACE TAKE PICTURE OF YOUR AADHAAR CARD</string>
+    <string name="text_barcode_doc">PLACE YOUR BARCODE LIKE THIS</string>
+    <string name="text_cancel">Cancel</string>
+    <string name="otherId">Other ID</string>
+
+    <string name="text_privacy_url">https://accurascan.com/privacy-policy </string>
+    <string name="text_about">About</string>
+    <string name="text_document_supported">Document Supported</string>
+    <string name="text_privacy_policy">Privacy Policy</string>
+    <string name="text_contact">Contact us</string>
+    <string name="text_connect">4. Contact our team at connect@accurascan.com if you are interested in our product.</string>
+    <string name="text_email_id">connect@accurascan.com</string>
+    <string name="about_screen">About us screen</string>
+    <string name="contact_screen">Contact us screen</string>
+    <string name="doc_supported_screen">Document supported Screen</string>
+    <string name="privacy_policy_screen">Privacy Policy Screen</string>
+    <string name="api_contact_us">api/contactus</string>
+    <string name="status_code_success">200</string>
+
+    <string name="text_website">https://www.accurascan.com</string>
+    <string name="text_linkedin_link">https://sg.linkedin.com/in/accurascan</string>
+    <string name="text_fb_link">https://www.facebook.com/AccuraScan/</string>
+    <string name="text_twitter_link">https://twitter.com/AccuraScan</string>
+
+    <!--Login Screen-->
+    <string name="emailId">EMAIL ID</string>
+    <string name="sr_no">Sr no</string>
+    <string name="documentType">Document Type</string>
+
+    <string name="text_saved_data">Data added successfully</string>
+
+    <string name="text_export_data">Export data</string>
+    <string name="text_export_excel">Export Excel Sheet</string>
+    <string name="text_export_pdf">Export PDF</string>
+    <string name="text_photo">Photo</string>
+    <string name="text_sharing_option">Select Sharing option</string>
+    <string name="text_no_data_export">No data to export</string>
+
+    <string name="text_product_of">Product of</string>
+    <string name="text_about_content">Accura Scan is an image processing company focused on Optical Character Recognition and Machine Vision Technology for mobile devices. Fast yet accurate text recognition solution using device camera to replace manual data entry.</string>
+    <string name="text_doc_support1">1. Passports (All countries)\n2. Visa (MRZ Visa)\n3. ID Cards (MRZ Supported)\n4. Driving License (MRZ Supported)\n5. USA Driving License (PDF417)\n6. Pan Card India - Full OCR\n7. Aadhaar Card India - Full OCR\n8. All Barcodes (1D &amp; 2D)</string>
+    <string name="text_scanned_data">Scanned Data</string>
+    <string name="text_doc_support2">1. Once you placed the document in front of the camera within a second extracted data would appear on the screen.
+        \n2. This apps works offline. We DON’T save your images or data on our servers, it is ONLY on your own mobile device, we don’t access it at all.
+        \n3. You can export last 10 Scanned Data in XLS or PDF format by email.</string>
+    <string name="text_mrz">What is MRZ</string>
+    <string name="text_mrz1">Machine Readable Zone, at the bottom of the identity page at the beginning of a passport. Marind language, ISO 639en dash3 code. Moree Airport, IATA code.</string>
+    <string name="text_contact_str">Your data would be treated with the utmost confidentiality and will not be shared.</string>
+    <string name="text_take_pic">Take Pic</string>
+    <string name="address">Address</string>
+    <string name="pan_card_no">Pan Card No</string>
+    <string name="aadhaar_card_no">Aadhaar Card No</string>
+    <string name="india">IND</string>
+
+    <string name="scantitle">Scan Front/Back Side of the Document</string>
+
+    <string name="middle_name">Middle name</string>
+    <string name="city">Mailing City</string>
+    <string name="zipcode">Mailing Postal Code</string>
+    <string name="birth_date">Date of Birth</string>
+    <string name="sex">Sex</string>
+    <string name="jurisdiction_code">Mailing Jurisdiction Code</string>
+    <string name="license_classification">License Classification Code</string>
+    <string name="license_restriction">License Restriction Code</string>
+    <string name="license_endorsement">License Endorsement Code</string>
+    <string name="issue_date">License or ID Document Issue Date</string>
+    <string name="height_in_ft">Height in FT_IN</string>
+    <string name="license_number">License or ID Number</string>
+    <string name="license_expiry_date">License Expiration Date</string>
+    <string name="full_name">Full Name</string>
+    <string name="height_in_cm">Height in CM</string>
+    <string name="weight_in_lbs">Weight in LBS</string>
+    <string name="weight_in_kg">Weight in KG</string>
+    <string name="eye_color">Eye Color</string>
+    <string name="hair_color">Hair Color</string>
+    <string name="issue_time">Issue Time</string>
+    <string name="number_of_duplicate">Number of Duplicates</string>
+    <string name="unique_customer_id">Unique Customer Identifier</string>
+    <string name="social_security_number">Social Security Number</string>
+    <string name="under_18">Under 18</string>
+    <string name="under_19">Under 19</string>
+    <string name="under_21">Under 21</string>
+    <string name="veteran_indicator">Veteran Indicator</string>
+    <string name="permit_issue">Permit Issue Date</string>
+    <string name="permit_expire">Permit Expiration Date</string>
+    <string name="permit_restriction">Permit Restriction Code</string>
+    <string name="permit_endorsement">Permit Endorsement Code</string>
+    <string name="court_restriction">Court Restriction Code</string>
+    <string name="inventory_control_no">Inventory Control No</string>
+    <string name="race_ethnicity">Race Ethnicity</string>
+    <string name="standard_vehicle_class">Standard Vehicle Classification</string>
+    <string name="document_discriminator">Document Discriminator</string>
+    <string name="name_prefix">Name Prefix</string>
+    <string name="name_suffix">Name Suffix</string>
+    <string name="api_key">1544605430AuefLvgk7yWX4nnApjO3f90MRARt9dkmJ4EQFVL7</string>
+    <string name="nationality">Nationality</string>
+    <string name="usa_dl_result">USA DL Result</string>
+    <string name="PDF417_Barcode">PDF417 Barcode</string>
+    <string name="documentNoCheck">Document Check Number</string>
+    <string name="dateOfBirthCheck">Birth Check Number</string>
+    <string name="dateOfExpiryCheck">Expiration Check Number</string>
+    <string name="otherIdCheck">Other ID Check</string>
+    <string name="SecondRowCheckNumber">Second Row Check Number</string>
+    <string name="failed">Failed</string>
+    <string name="result">Result</string>
+    <string name="ResidenceCity">Residence City</string>
+    <string name="ResidenceJurisdictionCode">Residence Jurisdiction Code</string>
+    <string name="ResidencePostalCode">Residence Postal Code</string>
+    <string name="MedicalIndicatorCodes">Medical Indicator Codes</string>
+    <string name="NonResidentIndicator">Non Resident Indicator</string>
+    <string name="VirginiaSpecificClass">Virginia Specific Class</string>
+    <string name="VirginiaSpecificRestrictions">Virginia Specific Restrictions</string>
+    <string name="VirginiaSpecificEndorsements">Virginia Specific Endorsements</string>
+    <string name="PhysicalDescriptionWeight">Physical Description Weight Range</string>
+    <string name="CountryTerritoryOfIssuance">Country Territory Of Issuance</string>
+    <string name="FederalCommercialVehicleCodes">Federal Commercial Vehicle Codes</string>
+    <string name="PlaceOfBirth">Place Of Birth</string>
+    <string name="StandardEndorsementCode">Standard Endorsement Code</string>
+    <string name="StandardRestrictionCode">Standard Restriction Code</string>
+    <string name="JuriSpeciVehiClassiDescri">Jurisdiction Specific Vehicle Classification Description</string>
+    <string name="JurisdictionSpecific">Jurisdiction Specific</string>
+    <string name="JuriSpeciRestriCodeDescri">Jurisdiction Specific Restriction Code Description</string>
+    <string name="ComplianceType">Compliance Type</string>
+    <string name="CardRevisionDate">Card Revision Date</string>
+    <string name="HazMatEndorsementExpiryDate">HazMat Endorsement Expiry Date</string>
+    <string name="FamilyNameTruncation">Family Name Truncation</string>
+    <string name="FirstNamesTruncation">First Names Truncation</string>
+    <string name="MiddleNamesTruncation">Middle Names Truncation</string>
+    <string name="OrganDonor">Organ Donor</string>
+    <string name="OrganDonorIndicator">Organ Donor Indicator</string>
+    <string name="PermitIdentifier">Permit Identifier</string>
+    <string name="AuditInformation">Audit Information</string>
+    <string name="addressLine1">Mailing Street Address1</string>
+    <string name="addressLine2">Mailing Street Address2</string>
+    <string name="ResidenceStreetAddress1">Residence Street Address1</string>
+    <string name="ResidenceStreetAddress2">Residence Street Address2</string>
+    <string name="suffix">Suffix</string>
+    <string name="prefix">Prefix</string>
+    <string name="LimitedDurationDocumentIndicator">Limited Duration Document Indicator</string>
+    <string name="PermitClassificationCode">Permit Classification Code</string>
+    <string name="familyName">Family Name</string>
+    <string name="GivenName">Given Name</string>
+    <string name="zoom_key">dUfNhktz2Tcl32pGgbPTZ57QujOQBluh</string>
+    <!--<string name="zoom_key">dpCkHGemc8Vf06wCL8vBRHlDq0CMm6jN</string>-->
+    <string name="authentication">Authenticated</string>
+    <string name="glassesDecision">Glasses Decision</string>
+    <string name="glassesScore">Glsses Score</string>
+    <string name="livenessAuthFacemap">Liveness result for authentication facemap</string>
+    <string name="livenessEnrollFacemap">Liveness result for enrollment facemap</string>
+    <string name="livenessScore">Liveness score</string>
+    <string name="facematchScore">FaceMatch score</string>
+    <string name="LivenessAuthResultFacemap">liveness score for authentication facemap</string>
+    <string name="livenessEnrollResultFacemap">liveness score for enrollment facemap</string>
+    <string name="matchScore">match score</string>
+    <string name="email_title">Enter Email ID to Save and Retrive Data using Face Scan.</string>
+    <string name="email">Email</string>
+    <string name="empty_email">Please enter email</string>
+    <string name="encrypted_key">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5PxZ3DLj+zP6T6HFgzzkM77LdzP3fojBoLasw7EfzvLMnJNUlyRb5m8e5QyyJxI+wRjsALHvFgLzGwxM8ehzDqqBZed+f4w33GgQXFZOS4AOvyPbALgCYoLehigLAbbCNTkeY5RDcmmSI/sbp+s6
+mAiAKKvCdIqe17bltZ/rfEoL3gPKEfLXeN549LTj3XBp0hvG4loQ6eC1E1tRzSkfGJD4GIVvR+j12gXAaftj3ahfYxioBH7F7HQxzmWkwDyn3bqU54eaiB7f0ftsPpWMceUaqkL2DZUvgN0efEJjnWy5y1/Gkq5GGWCROI9XG/SwXJ30BbVUehTbVcD70+ZF8QIDAQAB</string>
+    <string name="LivenessResult">Liveness Result</string>
+    <string name="retryFeedbackSuggestion">Retry Feedback suggestion</string>
+    <string name="text_result_bottom">Save document details and test it to retrieve the data back by using Face Match. Enter into a Password less World</string>
+    <string name="loginViaFace">Login via Face</string>
+    <string name="submit">Submit</string>
+    <string name="valid_email">Please enter valid email</string>
+    <string name="retry">Retry</string>
+    <string name="liveness_check">Liveness</string>
+    <string name="key_not_set">Retrieving facemaps requires that you generate a public/private key pair per the instructions at https://dev.zoomlogin.com/zoomsdk/#/zoom-server-guide</string>
+    <string name="public_key_not_set">Public Key Not Set</string>
+    <string name="use_photo">Use Photo</string>
+    <string name="title_activity_contact_us_web">ContactUsWebActivity</string>
+</resources>

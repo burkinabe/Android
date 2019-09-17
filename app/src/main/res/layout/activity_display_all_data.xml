@@ -1,0 +1,1619 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greyshade"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/margin_fifteen"
+        android:layout_marginLeft="@dimen/margin_fifteen"
+        android:layout_marginTop="@dimen/margin_fifteen"
+        android:layout_marginEnd="@dimen/margin_fifteen"
+        android:layout_marginRight="@dimen/margin_fifteen"
+        android:layout_marginBottom="@dimen/margin_fifteen"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/ten">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivUserProfile"
+                    android:layout_width="115dp"
+                    android:layout_height="115dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/default_user" />
+
+                <com.accurascandemo.view.CustomTextView
+                    android:id="@+id/tvMrz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="start|center_horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/blackShade"
+                    android:textSize="@dimen/fifteen"
+                    app:typeface="ALLER_STD_REG" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/separatorGrey" />
+
+                <LinearLayout
+                    android:id="@+id/llDoc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start|left"
+                        android:gravity="start|left"
+                        android:paddingRight="10dp"
+                        android:text="@string/document"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:id="@+id/tvDocumentType"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/separatorGrey" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start|left"
+                        android:gravity="start|left"
+                        android:paddingRight="10dp"
+                        android:text="@string/email"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:id="@+id/tvEmail"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/separatorGrey" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start|left"
+                        android:gravity="start|left"
+                        android:paddingRight="10dp"
+                        android:text="@string/lastName"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:id="@+id/tvLastName"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/separatorGrey" />
+
+                <LinearLayout
+                    android:id="@+id/llFirstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <com.accurascandemo.view.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="start|left"
+                            android:gravity="start|left"
+                            android:paddingRight="10dp"
+                            android:text="@string/firstName"
+                            android:textAllCaps="true"
+                            android:textColor="@color/blackShade"
+                            android:textSize="@dimen/fifteen"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.accurascandemo.view.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:gravity="top|center_horizontal"
+                            android:text=" : "
+                            android:textColor="@color/blackShade"
+                            android:textSize="@dimen/fifteen"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.accurascandemo.view.CustomTextView
+                            android:id="@+id/tvFirstName"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:paddingLeft="10dp"
+                            android:textAllCaps="true"
+                            android:textColor="@color/blackShade"
+                            android:textSize="@dimen/fifteen"
+                            app:typeface="ALLER_STD_REG" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/separatorGrey" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start|left"
+                        android:gravity="start|left"
+                        android:paddingRight="10dp"
+                        android:text="@string/documentNo"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:id="@+id/tvPassportNo"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/separatorGrey" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start|left"
+                        android:gravity="start|left"
+                        android:paddingRight="10dp"
+                        android:text="@string/documentNoCheck"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:id="@+id/tvDocumentNoCheck"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/separatorGrey" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start|left"
+                        android:gravity="start|left"
+                        android:paddingRight="10dp"
+                        android:text="@string/country"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:id="@+id/tvCountry"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/separatorGrey" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start|left"
+                        android:gravity="start|left"
+                        android:paddingRight="10dp"
+                        android:text="@string/nationality"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:id="@+id/tvNationality"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/separatorGrey" />
+
+                <LinearLayout
+                    android:id="@+id/llGeneder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <com.accurascandemo.view.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="start|left"
+                            android:gravity="start|left"
+                            android:paddingRight="10dp"
+                            android:text="@string/gender"
+                            android:textAllCaps="true"
+                            android:textColor="@color/blackShade"
+                            android:textSize="@dimen/fifteen"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.accurascandemo.view.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:gravity="top|center_horizontal"
+                            android:text=" : "
+                            android:textColor="@color/blackShade"
+                            android:textSize="@dimen/fifteen"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.accurascandemo.view.CustomTextView
+                            android:id="@+id/tvSex"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:paddingLeft="10dp"
+                            android:textAllCaps="true"
+                            android:textColor="@color/blackShade"
+                            android:textSize="@dimen/fifteen"
+                            app:typeface="ALLER_STD_REG" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/separatorGrey" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start|left"
+                        android:gravity="start|left"
+                        android:paddingRight="10dp"
+                        android:text="@string/dateOfBirth"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:id="@+id/tvDOB"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/separatorGrey" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start|left"
+                        android:gravity="start|left"
+                        android:paddingRight="10dp"
+                        android:text="@string/dateOfBirthCheck"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:id="@+id/tvDOBCheck"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/separatorGrey" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:visibility="gone">
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start|left"
+                        android:gravity="start|left"
+                        android:paddingRight="10dp"
+                        android:text="@string/dateOfIssue"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="center"
+                        android:text=" : "
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:id="@+id/tvDateOfIssue"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/separatorGrey"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start|left"
+                        android:gravity="start|left"
+                        android:paddingRight="10dp"
+                        android:text="@string/dateOfExpiry"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:id="@+id/tvDateOfExpiry"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/separatorGrey" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start|left"
+                        android:gravity="start|left"
+                        android:paddingRight="10dp"
+                        android:text="@string/dateOfExpiryCheck"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.accurascandemo.view.CustomTextView
+                        android:id="@+id/tvDateOfExpiryCheck"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/blackShade"
+                        android:textSize="@dimen/fifteen"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llOtherId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/separatorGrey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <com.accurascandemo.view.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="start|left"
+                            android:gravity="start|left"
+                            android:paddingRight="10dp"
+                            android:text="@string/otherId"
+                            android:textAllCaps="true"
+                            android:textColor="@color/blackShade"
+                            android:textSize="@dimen/fifteen"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.accurascandemo.view.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:gravity="top|center_horizontal"
+                            android:text=" : "
+                            android:textColor="@color/blackShade"
+                            android:textSize="@dimen/fifteen"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.accurascandemo.view.CustomTextView
+                            android:id="@+id/tvOtherId"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:paddingLeft="10dp"
+                            android:textAllCaps="true"
+                            android:textColor="@color/blackShade"
+                            android:textSize="@dimen/fifteen"
+                            app:typeface="ALLER_STD_REG" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/separatorGrey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <com.accurascandemo.view.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="start|left"
+                            android:gravity="start|left"
+                            android:paddingRight="10dp"
+                            android:text="@string/otherIdCheck"
+                            android:textAllCaps="true"
+                            android:textColor="@color/blackShade"
+                            android:textSize="@dimen/fifteen"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.accurascandemo.view.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:gravity="top|center_horizontal"
+                            android:text=" : "
+                            android:textColor="@color/blackShade"
+                            android:textSize="@dimen/fifteen"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.accurascandemo.view.CustomTextView
+                            android:id="@+id/tvOtherIdCheck"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:paddingLeft="10dp"
+                            android:textAllCaps="true"
+                            android:textColor="@color/blackShade"
+                            android:textSize="@dimen/fifteen"
+                            app:typeface="ALLER_STD_REG" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/separatorGrey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <com.accurascandemo.view.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="start|left"
+                            android:gravity="start|left"
+                            android:paddingRight="10dp"
+                            android:text="@string/SecondRowCheckNumber"
+                            android:textAllCaps="true"
+                            android:textColor="@color/blackShade"
+                            android:textSize="@dimen/fifteen"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.accurascandemo.view.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:gravity="top|center_horizontal"
+                            android:text=" : "
+                            android:textColor="@color/blackShade"
+                            android:textSize="@dimen/fifteen"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.accurascandemo.view.CustomTextView
+                            android:id="@+id/tvSecondRowCheckNumber"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:paddingLeft="10dp"
+                            android:textAllCaps="true"
+                            android:textColor="@color/blackShade"
+                            android:textSize="@dimen/fifteen"
+                            app:typeface="ALLER_STD_REG" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/separatorGrey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <com.accurascandemo.view.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="start|left"
+                            android:gravity="start|left"
+                            android:paddingRight="10dp"
+                            android:text="@string/result"
+                            android:textAllCaps="true"
+                            android:textColor="@color/blackShade"
+                            android:textSize="@dimen/fifteen"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.accurascandemo.view.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:gravity="top|center_horizontal"
+                            android:text=" : "
+                            android:textColor="@color/blackShade"
+                            android:textSize="@dimen/fifteen"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.accurascandemo.view.CustomTextView
+                            android:id="@+id/tvRet"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:gravity="left|start"
+                            android:paddingLeft="10dp"
+                            android:textAllCaps="true"
+                            android:textColor="@color/blackShade"
+                            android:textSize="@dimen/fifteen"
+                            app:typeface="ALLER_STD_REG" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llDocumentNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/separatorGrey" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <com.accurascandemo.view.CustomTextView
+                                android:id="@+id/tvDocNoTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="start|left"
+                                android:gravity="start|left"
+                                android:text="@string/documentNo"
+                                android:textAllCaps="true"
+                                android:textColor="@color/blackShade"
+                                android:textSize="@dimen/fifteen"
+                                app:typeface="ALLER_STD_REG" />
+
+                            <com.accurascandemo.view.CustomTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="right|end"
+                                android:gravity="top"
+                                android:text=" : "
+                                android:textColor="@color/blackShade"
+                                android:textSize="@dimen/fifteen"
+                                app:typeface="ALLER_STD_REG" />
+
+                            <com.accurascandemo.view.CustomTextView
+                                android:id="@+id/tvDocNo"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="right|end"
+                                android:layout_weight="1.6"
+                                android:gravity="left|start"
+                                android:paddingStart="10dp"
+                                android:paddingLeft="10dp"
+                                android:textAllCaps="true"
+                                android:textColor="@color/blackShade"
+                                android:textSize="@dimen/fifteen"
+                                app:typeface="ALLER_STD_REG" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llFacemap"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <LinearLayout
+                            android:id="@+id/llAuth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/separatorGrey" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="start|left"
+                                    android:gravity="start|left"
+                                    android:text="@string/authentication"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:gravity="top"
+                                    android:text=" : "
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:id="@+id/tvAuth"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:layout_weight="1.6"
+                                    android:gravity="left"
+                                    android:paddingLeft="10dp"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llGlassesDecision"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/separatorGrey" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="start|left"
+                                    android:gravity="start|left"
+                                    android:text="@string/glassesDecision"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:gravity="top"
+                                    android:text=" : "
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:id="@+id/tvGlassesDecision"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:layout_weight="1.6"
+                                    android:gravity="left"
+                                    android:paddingLeft="10dp"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llGlassesScore"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/separatorGrey" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="start|left"
+                                    android:gravity="start|left"
+                                    android:text="@string/glassesScore"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:gravity="top"
+                                    android:text=" : "
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:id="@+id/tvGlassesScore"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:layout_weight="1.6"
+                                    android:gravity="left"
+                                    android:paddingLeft="10dp"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llLivenessAuthFacemap"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/separatorGrey" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="start|left"
+                                    android:gravity="start|left"
+                                    android:text="@string/livenessAuthFacemap"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:gravity="top"
+                                    android:text=" : "
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:id="@+id/tvLivenessAuthFacemap"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:layout_weight="1.6"
+                                    android:gravity="left"
+                                    android:paddingLeft="10dp"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llLivenessEnrollFacemap"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/separatorGrey" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="start|left"
+                                    android:gravity="start|left"
+                                    android:text="@string/livenessEnrollFacemap"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:gravity="top"
+                                    android:text=" : "
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:id="@+id/tvLivenessEnrollFacemap"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:layout_weight="1.6"
+                                    android:gravity="left"
+                                    android:paddingLeft="10dp"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llLivenessScore"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/separatorGrey" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="start|left"
+                                    android:gravity="start|left"
+                                    android:text="@string/livenessScore"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:gravity="top"
+                                    android:text=" : "
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:id="@+id/tvLivenessScore"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:layout_weight="1.6"
+                                    android:gravity="left"
+                                    android:paddingLeft="10dp"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llLivenessAuthResultFacemap"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/separatorGrey" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="start|left"
+                                    android:gravity="start|left"
+                                    android:text="@string/LivenessAuthResultFacemap"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:gravity="top"
+                                    android:text=" : "
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:id="@+id/tvLivenessAuthResultFacemap"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:layout_weight="1.6"
+                                    android:gravity="left"
+                                    android:paddingLeft="10dp"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llLivenessEnrollResultFacemap"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/separatorGrey" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="start|left"
+                                    android:gravity="start|left"
+                                    android:text="@string/livenessEnrollResultFacemap"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:gravity="top"
+                                    android:text=" : "
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:id="@+id/tvLivenessEnrollResultFacemap"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:layout_weight="1.6"
+                                    android:gravity="left"
+                                    android:paddingLeft="10dp"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llMatchScore"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/separatorGrey" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="start|left"
+                                    android:gravity="start|left"
+                                    android:text="@string/matchScore"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:gravity="top"
+                                    android:text=" : "
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:id="@+id/tvMatchScore"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:layout_weight="1.6"
+                                    android:gravity="left"
+                                    android:paddingLeft="10dp"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llLiveness"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <LinearLayout
+                            android:id="@+id/llLivenessResult"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/separatorGrey" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="start|left"
+                                    android:gravity="start|left"
+                                    android:text="@string/LivenessResult"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:gravity="top"
+                                    android:text=" : "
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:id="@+id/tvLivenessResult"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:layout_weight="1.6"
+                                    android:gravity="left"
+                                    android:paddingLeft="10dp"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llRetryFeedbackSuggestion"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/separatorGrey" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="start|left"
+                                    android:gravity="start|left"
+                                    android:text="@string/retryFeedbackSuggestion"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:gravity="top"
+                                    android:text=" : "
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+
+                                <com.accurascandemo.view.CustomTextView
+                                    android:id="@+id/tvRetryFeedbackSuggestion"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:layout_weight="1.6"
+                                    android:gravity="left"
+                                    android:paddingLeft="10dp"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/blackShade"
+                                    android:textSize="@dimen/fifteen"
+                                    app:typeface="ALLER_STD_REG" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <com.accurascandemo.view.CustomTextView
+            android:id="@+id/tvOk"
+            android:layout_width="@dimen/btn_width"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/round_border_rect"
+            android:gravity="center"
+            android:text="@string/ok"
+            android:textColor="@color/white"
+            android:textSize="@dimen/seventeen"
+            app:typeface="ALLER_STD_DISPLAY" />
+    </LinearLayout>
+
+</RelativeLayout>

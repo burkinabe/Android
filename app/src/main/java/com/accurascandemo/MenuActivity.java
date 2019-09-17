@@ -1,0 +1,139 @@
+package com.accurascandemo;
+
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.accurascandemo.R;
+import com.accurascandemo.view.CustomMenuButton;
+
+public class MenuActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_menu);
+
+        CustomMenuButton btnOCR = new CustomMenuButton(this, R.id.btnAccuraOCR);
+        CustomMenuButton btnFace = new CustomMenuButton(this, R.id.btnAccuraFace);
+        CustomMenuButton btnScan = new CustomMenuButton(this, R.id.btnAccuraScan);
+
+        Button btnVisitAccuraScan = findViewById(R.id.btnVisitAccuraScan);
+        Button btnEmailUs = findViewById(R.id.btnEmailUs);
+        btnVisitAccuraScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.text_website)));
+                startActivity(browserIntent);
+            }
+        });
+        btnEmailUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setType("text/plain");
+                intent.setData(Uri.parse("mailto:connect@accurascan.com"));
+                startActivity(Intent.createChooser(intent, "Send Email"));
+            }
+        });
+
+        btnOCR.setBackgroundResource(R.drawable.btn_bg_red);
+
+        btnFace.setImageResource(R.id.button_image, R.drawable.face_scan);
+        btnFace.setText(R.id.button_text_caption, getString(R.string.accura_face));
+        btnFace.setText(R.id.button_text_desp, getString(R.string.accura_face_desp));
+        btnFace.setBackgroundResource(R.drawable.btn_bg_grey);
+
+        btnScan.setImageResource(R.id.button_image, R.drawable.scan);
+        btnScan.setText(R.id.button_text_caption, getString(R.string.accura_scan));
+        btnScan.setText(R.id.button_text_desp, getString(R.string.accura_scan_desp));
+        btnScan.setBackgroundResource(R.drawable.btn_bg_red);
+
+        btnOCR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AccuraDemoApplication.mMenuMode = AccuraDemoApplication.MENU_MODE_OCR;
+                Intent intent = new Intent(MenuActivity.this, MainActivity.class);
+                intent.putExtra(MainActivity.TITLE, getString(R.string.accura_ocr)).setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+            }
+        });
+
+        btnFace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AccuraDemoApplication.mMenuMode = AccuraDemoApplication.MENU_MODE_FACE;
+                startActivity(new Intent(MenuActivity.this, FaceMatchActivity.class).setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                overridePendingTransition(0, 0);
+            }
+        });
+
+        btnScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AccuraDemoApplication.mMenuMode = AccuraDemoApplication.MENU_MODE_SCAN;
+                Intent intent = new Intent(MenuActivity.this, MainActivity.class);
+                intent.putExtra(MainActivity.TITLE, getString(R.string.accura_scan)).setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+            }
+        });
+
+        requestCameraPermission();
+    }
+
+    public void requestCameraPermission() {
+        int currentapiVersion = Build.VERSION.SDK_INT;
+        if (currentapiVersion >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+                    && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA) &&
+                        ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+
+                    ActivityCompat.requestPermissions(this,
+                            new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                            1);
+
+                } else {
+                    ActivityCompat.requestPermissions(this,
+                            new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                            1);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+            requestCameraPermission();
+        }
+        switch (requestCode) {
+            case 1:
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //Start your camera handling here
+                    try {
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                } else {
+                    Toast.makeText(this, "You declined to allow the app to access your camera", Toast.LENGTH_SHORT).show();
+                }
+        }
+    }
+}

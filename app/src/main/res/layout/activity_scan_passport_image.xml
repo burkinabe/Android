@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimary"
+            android:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:src="@mipmap/back_ic" />
+
+            <com.accurascandemo.view.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/text_scan_doc"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/seventeen"
+                app:typeface="ALLER_STD_REG" />
+
+        </android.support.v7.widget.Toolbar>
+    </LinearLayout>
+
+    <!--<ScrollView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:fillViewport="true"-->
+    <!--android:padding="10dp"-->
+    <!--android:scrollbars="none">-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.accurascandemo.view.CustomTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="@string/text_place_doc"
+            android:textAllCaps="true"
+            android:textColor="@color/red"
+            android:textSize="@dimen/fifteen"
+            app:typeface="ALLER_STD_LIGHT" />
+
+        <ImageView
+            android:id="@+id/ivScan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name"
+            android:src="@mipmap/demoimage" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <com.accurascandemo.view.CustomTextView
+            android:id="@+id/tvLetsGo"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginTop="@dimen/margin_fifteen"
+            android:layout_marginBottom="@dimen/margin_fifteen"
+            android:background="@drawable/round_border_rect_black"
+            android:gravity="center"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:text="@string/text_start_scanning"
+            android:textColor="@color/white"
+            android:textSize="@dimen/fifteen"
+            app:typeface="ALLER_STD_LIGHT" />
+    </LinearLayout>
+    <!--</LinearLayout>-->
+    <!--</ScrollView>-->
+</LinearLayout>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context="com.accurascandemo.AboutActivity">
+
+    <include layout="@layout/toolbar_with_back" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.accurascandemo.view.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_fifteen"
+            android:gravity="center"
+            android:text="@string/text_product_of"
+            android:textColor="@color/dark_gray"
+            app:typeface="ALLER_STD_REG"
+            android:textSize="14dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_fifteen"
+            android:contentDescription="@string/app_name"
+            android:src="@mipmap/logo_loign" />
+
+        <com.accurascandemo.view.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_twenty"
+            android:gravity="center"
+            android:paddingEnd="@dimen/margin_fifteen"
+            android:paddingLeft="@dimen/margin_fifteen"
+            android:paddingRight="@dimen/margin_fifteen"
+            android:paddingStart="@dimen/margin_fifteen"
+            android:text="@string/text_about_content"
+            android:textColor="@color/dark_gray"
+            app:typeface="ALLER_STD_REG"
+            android:textSize="14dp"/>
+
+        <com.accurascandemo.view.CustomTextView
+            android:id="@+id/tvAppLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_twenty"
+            android:gravity="center"
+            android:text="@string/text_website"
+            android:textColor="#0000FF"
+            android:textSize="@dimen/seventeen"
+            app:typeface="ALLER_STD_REG" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/margin_twenty"
+            android:layout_marginTop="@dimen/margin_twenty"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/ibLinkedIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/app_name"
+                android:src="@mipmap/linkedin" />
+
+            <ImageButton
+                android:id="@+id/ibFacebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_twenty"
+                android:layout_marginStart="@dimen/margin_twenty"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/app_name"
+                android:src="@mipmap/facebook" />
+
+            <ImageButton
+                android:id="@+id/ibTwitter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_twenty"
+                android:layout_marginStart="@dimen/margin_twenty"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/app_name"
+                android:src="@mipmap/twitter" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

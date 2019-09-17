@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/red"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="?android:attr/actionBarSize">
+
+        <com.accurascandemo.view.CustomTextView
+            android:id="@+id/tvAppName"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/seventeen"
+            app:typeface="ALLER_STD_DISPLAY"
+            android:drawableStart="@mipmap/nav_logo"
+            android:drawableLeft="@mipmap/nav_logo"
+            android:drawablePadding="10dp"
+            android:layout_marginLeft="@dimen/margin_fifteen"
+            android:layout_marginStart="@dimen/margin_fifteen"/>
+
+        <ImageView
+            android:id="@+id/ivMenuClose"
+            android:layout_width="wrap_content"
+            android:layout_height="?android:attr/actionBarSize"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/margin_twenty"
+            android:layout_marginRight="@dimen/margin_twenty"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_menu"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:tint="@color/white"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/bottom_line" />
+</LinearLayout>

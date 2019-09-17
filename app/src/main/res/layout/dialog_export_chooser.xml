@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="@android:color/white"
+    android:padding="20dp">
+
+    <com.accurascandemo.view.CustomTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_sharing_option"
+        android:textColor="@android:color/black"
+        app:typeface="ALLER_STD"
+        android:textSize="20dp"
+        android:paddingLeft="10dp"
+        android:paddingStart="10dp"/>
+
+    <com.accurascandemo.view.CustomTextView
+        android:id="@+id/tvExcel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_export_excel"
+        android:textColor="@android:color/black"
+        app:typeface="ALLER_STD_REG"
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <com.accurascandemo.view.CustomTextView
+        android:id="@+id/tvPDF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_export_pdf"
+        android:textColor="@android:color/black"
+        app:typeface="ALLER_STD_REG"
+        android:textSize="16dp"
+        android:padding="10dp"/>
+</LinearLayout>
