@@ -687,31 +687,16 @@ public class CameraActivity extends Activity implements
                 Bitmap bmp_org = BitmapFactory.decodeByteArray(os.toByteArray(), 0, os.toByteArray().length);
                 Matrix matrix = new Matrix();
                 matrix.postRotate(mDisplayOrientation);
+
+
                 Bitmap bmp1 = Bitmap.createBitmap(bmp_org, 0, 0, bmp_org.getWidth(), bmp_org.getHeight(), matrix, true);
 
-              /*  int[] loc1 = new int[2];
-                mPreviewFrame.getLocationInWindow(loc1);
-
-                int[] loc = new int[2];
-                rel_main.getLocationInWindow(loc);
-                int x = loc[0];
-                int y = loc[1];*/
-
-                //bmCard = Bitmap.createBitmap(bmp1,x,y,mPreviewFrame.getWidth(),mPreviewFrame.getHeight());
-
-               /* if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                    bmCard = Bitmap.createBitmap(bmp1,0,0,bmp1.getWidth(),bmp1.getHeight());
-                } else {
-                    int width=rel_main.getWidth();
-                    int height=rel_main.getHeight();
-                    bmCard=Bitmap.createBitmap(bmp1,x,y,rel_main.getWidth(),rel_main.getHeight());
-                }*/
-
-
+                //Crop image before scan , send crop image to OCR SDK
                 if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                    //bmCard = BitmapUtil.centerCrop(bmp1, bmp1.getWidth(), bmp1.getHeight());
+                    //Crop image as per Frame size in landscape mode
                     bmCard = Bitmap.createScaledBitmap(bmp1, 757, 428, false);
                 } else {
+                    //center crop in portrait mode
                     bmCard = BitmapUtil.centerCrop(bmp1, bmp1.getWidth(), bmp1.getHeight() / 3);
                 }
 
@@ -729,14 +714,7 @@ public class CameraActivity extends Activity implements
                     ret = mCardScanner.doRunData(bmCard, RecogEngine.facepick, mDisplayRotation, RecogEngine.g_recogResult);
                     if (ret <= 0 && mRecCnt > 2) {
                         // Bitmap docBmp = null;
-                       /* if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                            //Do some stuff
-                            docBmp = BitmapUtil.centerCrop(bmCard, bmCard.getWidth() / 3, bmCard.getHeight() / 2);
-                            //  RecogEngine.g_recogResult.docBitmap = BitmapUtil.centerCrop(bmCard, rel_main.getWidth()/5, rel_main.getHeight()/3);
-                        } else {
-                            // RecogEngine.g_recogResult.docBitmap = BitmapUtil.centerCrop(bmCard, rel_main.getWidth()/2, rel_main.getHeight()/3);
-                            docBmp = BitmapUtil.centerCrop(bmCard, bmCard.getWidth(), bmCard.getHeight() / 3);
-                        }*/
+
                         if (mRecCnt % 4 == 1)
                             faceret = mCardScanner.doRunFaceDetect(bmCard, RecogEngine.g_recogResult);
                     }
@@ -746,14 +724,7 @@ public class CameraActivity extends Activity implements
                 } else if (RecogEngine.g_recogResult.recType == RecType.MRZ) { //have to do face
                     if (mRecCnt > 2) {
                         Bitmap docBmp = bmCard;
-                       /* if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                            //Do some stuff
-                            docBmp = BitmapUtil.centerCrop(bmCard, bmCard.getWidth() / 3, bmCard.getHeight() / 2);
-                            //  RecogEngine.g_recogResult.docBitmap = BitmapUtil.centerCrop(bmCard, rel_main.getWidth()/5, rel_main.getHeight()/3);
-                        } else {
-                            // RecogEngine.g_recogResult.docBitmap = BitmapUtil.centerCrop(bmCard, rel_main.getWidth()/2, rel_main.getHeight()/3);
-                            docBmp = BitmapUtil.centerCrop(bmCard, bmCard.getWidth(), bmCard.getHeight() / 3);
-                        }*/
+
                         if (mRecCnt % 5 == 1)
                             ret = mCardScanner.doRunFaceDetect(docBmp, RecogEngine.g_recogResult);
                     }
@@ -767,14 +738,6 @@ public class CameraActivity extends Activity implements
                         if (ret > 0) {
                             mRecCnt = 0; //counter sets 0
                             Bitmap docBmp = bmCard;
-                           /* if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                                //Do some stuff
-                                docBmp = BitmapUtil.centerCrop(bmCard, bmCard.getWidth() / 3, bmCard.getHeight() / 2);
-                                //  RecogEngine.g_recogResult.docBitmap = BitmapUtil.centerCrop(bmCard, rel_main.getWidth()/5, rel_main.getHeight()/3);
-                            } else {
-                                // RecogEngine.g_recogResult.docBitmap = BitmapUtil.centerCrop(bmCard, rel_main.getWidth()/2, rel_main.getHeight()/3);
-                                docBmp = BitmapUtil.centerCrop(bmCard, bmCard.getWidth(), bmCard.getHeight() / 3);
-                            }*/
 
                             if ((RecogEngine.g_recogResult.recType == RecType.MRZ && !RecogEngine.g_recogResult.bRecDone) ||
                                     (RecogEngine.g_recogResult.recType == RecType.FACE && RecogEngine.g_recogResult.bRecDone)) {

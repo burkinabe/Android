@@ -156,6 +156,7 @@ public class CameraPanAddhaarActivity extends BaseActivity {
         super.onPause();
     }
 
+    //CameraView override
     private void setupCameraCallbacks() {
         cameraView.setOnPictureTakenListener(new CameraViewImpl.OnPictureTakenListener() {
             @Override
@@ -253,38 +254,12 @@ public class CameraPanAddhaarActivity extends BaseActivity {
     private String bitmapToFile(Bitmap bitmap) {
         Bitmap croppedBmp;
         frameBitmap = bitmap;
-//        if (isLandScape) {
-//            bitmap = rotateBitmap(bitmap, -cameraView.getCurrentOrientation());
-//        }
-//        if (isLandScape && frameBitmap.getHeight() > bitmap.getHeight()) {
-//            frameBitmap = Bitmap.createScaledBitmap(frameBitmap, frameBitmap.getWidth(), bitmap.getHeight(), true);
-//            croppedBmp = Bitmap.createBitmap(bitmap, (bitmap.getWidth() / 2 - frameBitmap.getWidth() / 2) + 250, bitmap.getHeight() / 2 - frameBitmap.getHeight() / 2, frameBitmap.getWidth() - 250, frameBitmap.getHeight());
-//        } else if (!isLandScape && frameBitmap.getWidth() > bitmap.getWidth()) {
-//            frameBitmap = Bitmap.createScaledBitmap(frameBitmap, bitmap.getWidth(), frameBitmap.getHeight(), true);
-//            croppedBmp = Bitmap.createBitmap(bitmap, bitmap.getWidth() / 2 - frameBitmap.getWidth() / 2, (bitmap.getHeight() / 2 - frameBitmap.getHeight() / 2) + 250, frameBitmap.getWidth(), frameBitmap.getHeight() - 250);
-//        } else {
-//            int x= (bitmap.getWidth() / 2 - frameBitmap.getWidth() / 2);
-//            int width = frameBitmap.getWidth();
-//            if(x > 0){
-//                x= x-100;
-//                width = width+200;
-//            }
-//            int y= (bitmap.getHeight() / 2 - frameBitmap.getHeight() / 2);
-//            int height = frameBitmap.getHeight();
-//            if(y > 0){
-//                y= y-100;
-//                height = height + 200;
-//            }
-//            croppedBmp = Bitmap.createBitmap(bitmap, x, y, width, height);
-//        }
-//        croppedBmp = rotateBitmap(croppedBmp, 90);
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            //Do some stuff
+            //crop pan and Addhar image in Lanscape mode.
             croppedBmp = BitmapUtil.centerCrop(bitmap, bitmap.getWidth() / 3, bitmap.getHeight() / 2);
-            //  RecogEngine.g_recogResult.docBitmap = BitmapUtil.centerCrop(bmCard, rel_main.getWidth()/5, rel_main.getHeight()/3);
         } else {
-            // RecogEngine.g_recogResult.docBitmap = BitmapUtil.centerCrop(bmCard, rel_main.getWidth()/2, rel_main.getHeight()/3);
+            //crop pan and Addhar image in portrait mode.
             croppedBmp = BitmapUtil.centerCrop(bitmap, bitmap.getWidth(), bitmap.getHeight() / 3);
         }
         croppedBmp = rotateBitmap(croppedBmp, 90);

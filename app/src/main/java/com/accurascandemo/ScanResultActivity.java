@@ -371,6 +371,7 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
         setUserPassportProfile();
     }
 
+    //Set scanned passport data to view
     private void setUserPassportProfile() {
 
         Log.d("Result", RecogEngine.g_recogResult.GetResultString());
@@ -565,10 +566,12 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
                 break;
 
             case R.id.tvSave:
+                //start liveness
                 isLiveness = true;
                 launchZoomScanScreen();
                 break;
             case R.id.tvFM:
+                //start FaceMatch
                 isFaceMatch = true;
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 File f = new File(Environment.getExternalStorageDirectory(), "temp.jpg");
@@ -580,7 +583,8 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, uriForFile);
                 startActivityForResult(intent, CAPTURE_IMAGE);
                 break;
-            case R.id.tvRetry:
+            case R.id.tvRetry://start liveness
+                isLiveness = true;
                 launchZoomScanScreen();
                 break;
             case R.id.tvCancel:
@@ -603,20 +607,6 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
             default:
                 break;
         }
-    }
-
-    private void displayAlert(final String msg) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                new AlertDialogAbstract(ScanResultActivity.this, msg, getString(R.string.ok), "") {
-                    @Override
-                    public void positive_negativeButtonClick(int pos_neg_id) {
-                        finish();
-                    }
-                };
-            }
-        });
     }
 
     private void displayRetryAlert(final String msg) {
@@ -642,7 +632,6 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
                 }
                 ParsedResponse p = HandleResponse.responseEnroll(ScanResultActivity.this, data.toString());
                 if (p.error) {
-//                    displayAlert((String) p.o);
                     displayRetryAlert("Something went wrong with Liveness Check. Please try again");
 
                 }
@@ -662,7 +651,6 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
                 if (!p.error) {
                     enroll(identifier, sessionId);
                 } else {
-//                    displayAlert((String) p.o);
                     displayRetryAlert("Something went wrong with Liveness Check. Please try again");
                 }
             }
@@ -689,6 +677,7 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
                 if (!p.error) {
                     final LivenessData livenessData = (LivenessData) p.o;
                     if (!livenessData.livenessResult.equalsIgnoreCase("undetermined")) {
+                        //liveness complete successfully.
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -708,6 +697,8 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
     //////////////////////////////////////
     //facematch
     /////////////////////////////////////
+
+    //init Face Match Engine
     private void initEngine() {
 
         writeFileToPrivateStorage(R.raw.model, "model.prototxt");
@@ -806,6 +797,7 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
     public void onExtractInit(int ret) {
     }
 
+    //Calculate Face Match Score
     public void calcMatch() {
         if (leftResult == null || rightResult == null) {
             match_score = 0.0f;
@@ -845,6 +837,7 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
         }
     }
 
+    //Rotate Image as per current orientation
     private Bitmap rotateImage(final String path) {
         Bitmap b = decodeFileFromPath(path);
 
@@ -876,6 +869,7 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
         return b;
     }
 
+    //Get bitmap image form path
     private Bitmap decodeFileFromPath(String path) {
         Uri uri = getImageUri(path);
         InputStream in = null;
@@ -930,6 +924,7 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
         return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
+    //mail OCR,FM and Liveness result
     private void sendResultToServer(String subject) {
         if (isFaceMatch) {
             tvFM.setVisibility(View.GONE);

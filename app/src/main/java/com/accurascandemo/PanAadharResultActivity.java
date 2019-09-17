@@ -293,10 +293,12 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
         isFaceMatch = false;
         switch (view.getId()) {
             case R.id.tvSave:
+                //Start liveness
                 isLiveness = true;
                 launchZoomScanScreen();
                 break;
             case R.id.tvFM:
+                //Start Facematch
                 isFaceMatch = true;
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 File f = new File(Environment.getExternalStorageDirectory(), "temp.jpg");
@@ -309,6 +311,7 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
                 startActivityForResult(intent, CAPTURE_IMAGE);
                 break;
             case R.id.tvRetry:
+                //Start liveness
                 isLiveness = true;
                 launchZoomScanScreen();
                 break;
@@ -549,6 +552,7 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
         return b;
     }
 
+    //Get bitmap image form path
     private Bitmap decodeFileFromPath(String path) {
         Uri uri = getImageUri(path);
         InputStream in = null;
@@ -726,7 +730,6 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
             public void completion(final boolean completed, final String message, final JSONObject data) {
                 ParsedResponse p = HandleResponse.responseEnroll(PanAadharResultActivity.this, data.toString());
                 if (p.error) {
-//                    displayAlert((String) p.o);
                     displayRetryAlert("Something went wrong with Liveness Check. Please try again");
 
                 }
@@ -786,7 +789,6 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
                         }
                     }
                 } else {
-//                    displayAlert((String) p.o);
                     displayRetryAlert("Something went wrong with Liveness Check. Please try again");
                 }
             }
@@ -807,6 +809,7 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                //Liveness complete successfully
                                 setLivenessData(livenessData);
                             }
                         });
@@ -917,6 +920,7 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
     public void onExtractInit(int ret) {
     }
 
+    //Calculate Pan and Adhare facematch score
     public void calcMatch() {
         if (leftResult == null || rightResult == null) {
             match_score = 0.0f;
@@ -933,6 +937,7 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
         }
     }
 
+    //Copy file to privateStorage
     public void writeFileToPrivateStorage(int fromFile, String toFile) {
         InputStream is = getApplicationContext().getResources().openRawResource(fromFile);
         int bytes_read;
@@ -953,6 +958,8 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
         }
     }
 
+
+    //mail OCR,FM and Liveness result
     private void sendResultToServer(String subject) {
         boolean isPanCard = false;
         if (isFaceMatch) {

@@ -70,8 +70,8 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
     float[] inputFeature;
     float[] matchFeature;
 
-    final private int PICK_IMAGE = 1;
-    final private int CAPTURE_IMAGE = 2;
+    final private int PICK_IMAGE = 1; //Pick image from gallary
+    final private int CAPTURE_IMAGE = 2; //Capture image by camera
 
     Bitmap face1, face2 = null;
 
@@ -156,11 +156,8 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
                     return;
                 Bitmap bmp = rotateImage(FileUtils.getPath(this,data.getData()));
                 Bitmap nBmp = bmp.copy(Bitmap.Config.ARGB_8888, true);
-               /* if (face1 == null) {
-                    face1 = nBmp;
-                } else {
-                    face2 = nBmp;
-                }*/
+
+                //if select image1 then ind=1 else ind=2 for image2
                 if (ind == 1) {
                     face1 = nBmp;
                     image1.setImage(nBmp);
@@ -176,11 +173,13 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
                 ByteBuffer buff = ByteBuffer.allocate(s * h);
                 nBmp.copyPixelsToBuffer(buff);
                 if (ind == 1)
+                    //Detect face from image1
                     FaceLockHelper.DetectLeftFace(buff.array(), w, h);
                 else {
                     if (image1.getFaceDetectionResult() != null) {
                         FaceLockHelper.DetectRightFace(buff.array(), w, h, image1.getFaceDetectionResult().getFeature());
                     } else {
+                        //Detect face from image2
                         FaceLockHelper.DetectRightFace(buff.array(), w, h, null);
                     }
                 }
@@ -198,12 +197,8 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
                 Bitmap bmp = rotateImage(ttt.getAbsolutePath());
                 ttt.delete();
                 Bitmap nBmp = bmp.copy(Bitmap.Config.ARGB_8888, true);
-              /*  if (face1 == null) {
-                    face1 = nBmp;
-                } else {
-                    face2 = nBmp;
-                }*/
 
+                //if select image1 then ind=1 else ind=2 for image2
                 if (ind == 1) {
                     face1 = nBmp;
                     image1.setImage(nBmp);
@@ -219,11 +214,13 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
                 ByteBuffer buff = ByteBuffer.allocate(s * h);
                 nBmp.copyPixelsToBuffer(buff);
                 if (ind == 1)
+                    //Detect face from image1
                     FaceLockHelper.DetectLeftFace(buff.array(), w, h);
                 else {
                     if (image1.getFaceDetectionResult() != null) {
                         FaceLockHelper.DetectRightFace(buff.array(), w, h, image1.getFaceDetectionResult().getFeature());
                     } else {
+                        //Detect face from image2
                         FaceLockHelper.DetectRightFace(buff.array(), w, h, null);
                     }
                 }
@@ -312,6 +309,7 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
          return Uri.fromFile(new File(path));
     }
 
+    //Get bitmap image form path
     private Bitmap decodeFileFromPath(String path) {
         Uri uri = getImageUri(path);
         InputStream in = null;
@@ -348,6 +346,7 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
         return null;
     }
 
+    //Rotate Image as per current orientation
     private Bitmap rotateImage(final String path) {
         Bitmap b = decodeFileFromPath(path);
 
@@ -452,6 +451,7 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
         }
     }
 
+    //init FaceMatch Engine
     private void initEngine() {
 
         writeFileToPrivateStorage(R.raw.model, "model.prototxt");
@@ -550,6 +550,7 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
     public void onExtractInit(int ret) {
     }
 
+    // Calculate FaceMatch score
     public void calcMatch() {
         if (image1.getFaceDetectionResult() == null || image2.getFaceDetectionResult() == null) {
             txtScore.setText("Match Score : 0 %");
