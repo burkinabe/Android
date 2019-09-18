@@ -70,10 +70,10 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
     float[] inputFeature;
     float[] matchFeature;
 
-    final private int PICK_IMAGE = 1; //Pick image from gallary
-    final private int CAPTURE_IMAGE = 2; //Capture image by camera
+    final private int PICK_IMAGE = 1; // request code of select image from gallery
+    final private int CAPTURE_IMAGE = 2; //request code of capture image in camera
 
-    Bitmap face1, face2 = null;
+    Bitmap face1, face2 = null; // used to contain image bitmap of front side image (face1) and  back side image (face2)
 
     private boolean isEmailSent = false;
 
@@ -82,7 +82,9 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facematch);
 
-        initEngine();
+        initEngine(); //initialize the FaceMatch Engine
+
+        //handle click of gallery button of front side image that is used to select image from gallery
         findViewById(R.id.btnGallery1).setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 isEmailSent = false;
@@ -93,6 +95,8 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
                 startActivityForResult(Intent.createChooser(intent, ""), PICK_IMAGE);
             }
         });
+
+        //handle click of camera button of front side image  that is used to capture image
         findViewById(R.id.btnCamera1).setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 isEmailSent = false;
@@ -108,6 +112,8 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
                 startActivityForResult(intent, CAPTURE_IMAGE);
             }
         });
+
+        //handle click of gallery button of back side image
         findViewById(R.id.btnGallery2).setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 isEmailSent = false;
@@ -118,6 +124,8 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
                 startActivityForResult(Intent.createChooser(intent, ""), PICK_IMAGE);
             }
         });
+
+        //handle click of camera button of back side image
         findViewById(R.id.btnCamera2).setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 isEmailSent = false;
@@ -144,48 +152,56 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
         txtScore = (CustomTextView) findViewById(R.id.tvScore);
         txtScore.setText("Match Score : 0 %");
 
-        image1 = new MyView(this);
-        image2 = new MyView(this);
+        image1 = new MyView(this);  //initialize the view of front image
+        image2 = new MyView(this);  //initialize the view of back side image
     }
 
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == PICK_IMAGE) {
-                if (data == null)
+
+            if (requestCode == PICK_IMAGE) { //handle request code PICK_IMAGE used for selecting image from gallery
+
+                if (data == null) // data contain result of selected image from gallery and other
                     return;
-                Bitmap bmp = rotateImage(FileUtils.getPath(this,data.getData()));
+
+                //create a bitmap of selecetd image from gallery by using its real path
+                Bitmap bmp = rotateImage(FileUtils.getPath(this, data.getData()));
                 Bitmap nBmp = bmp.copy(Bitmap.Config.ARGB_8888, true);
 
-                //if select image1 then ind=1 else ind=2 for image2
+                // ind is a integer variable used to handle front Image(Face 1) and back Image(Face 2) 1= for face1 and 2= for face 2
                 if (ind == 1) {
                     face1 = nBmp;
                     image1.setImage(nBmp);
-                    SetImageView1();
+                    SetImageView1();    //create ImageView of front image
                 } else if (ind == 2) {
                     face2 = nBmp;
                     image2.setImage(nBmp);
-                    SetImageView2();
+                    SetImageView2();    //create ImageView of back image
                 }
-                int w = nBmp.getWidth();
-                int h = nBmp.getHeight();
+
+                int w = nBmp.getWidth(); //getting width of selected image bitmap
+                int h = nBmp.getHeight(); //getting height of selected image bitmap
+
                 int s = (w * 32 + 31) / 32 * 4;
                 ByteBuffer buff = ByteBuffer.allocate(s * h);
                 nBmp.copyPixelsToBuffer(buff);
+
                 if (ind == 1)
-                    //Detect face from image1
+                    // ind =1 so it detect front side imagee (face1)
                     FaceLockHelper.DetectLeftFace(buff.array(), w, h);
                 else {
                     if (image1.getFaceDetectionResult() != null) {
                         FaceLockHelper.DetectRightFace(buff.array(), w, h, image1.getFaceDetectionResult().getFeature());
                     } else {
-                        //Detect face from image2
+                        // ind = 2 so it detect back side image (face2)
                         FaceLockHelper.DetectRightFace(buff.array(), w, h, null);
                     }
                 }
-            } else if (requestCode == CAPTURE_IMAGE) {
+            } else if (requestCode == CAPTURE_IMAGE) { // handle request code CAPTURE_IMAGE used for capture image in camera
                 File f = new File(Environment.getExternalStorageDirectory().toString());
                 File ttt = null;
+
                 for (File temp : f.listFiles()) {
                     if (temp.getName().equals("temp.jpg")) {
                         ttt = temp;
@@ -194,33 +210,39 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
                 }
                 if (ttt == null)
                     return;
+
+                //create a bitmap of captured image in camera
                 Bitmap bmp = rotateImage(ttt.getAbsolutePath());
                 ttt.delete();
                 Bitmap nBmp = bmp.copy(Bitmap.Config.ARGB_8888, true);
 
-                //if select image1 then ind=1 else ind=2 for image2
+                // ind is a integer variable used to handle front side image (Face 1) and bck side image (Face 2) 1= for face1 and 2= for face 2
                 if (ind == 1) {
                     face1 = nBmp;
                     image1.setImage(nBmp);
-                    SetImageView1();
+                    SetImageView1();      //create ImageView of front side image (face 1)
                 } else if (ind == 2) {
                     face2 = nBmp;
                     image2.setImage(nBmp);
-                    SetImageView2();
+                    SetImageView2();      //create ImageView of back side image (face 2)
                 }
-                int w = nBmp.getWidth();
-                int h = nBmp.getHeight();
+
+                int w = nBmp.getWidth(); //getting width of captured image bitmap
+                int h = nBmp.getHeight(); //getting height of captured image bitmap
+
                 int s = (w * 32 + 31) / 32 * 4;
                 ByteBuffer buff = ByteBuffer.allocate(s * h);
                 nBmp.copyPixelsToBuffer(buff);
+
                 if (ind == 1)
-                    //Detect face from image1
+                    // ind =1 so it detect front side image
                     FaceLockHelper.DetectLeftFace(buff.array(), w, h);
                 else {
+
                     if (image1.getFaceDetectionResult() != null) {
                         FaceLockHelper.DetectRightFace(buff.array(), w, h, image1.getFaceDetectionResult().getFeature());
                     } else {
-                        //Detect face from image2
+                        // ind = 2 so it detect back side image
                         FaceLockHelper.DetectRightFace(buff.array(), w, h, null);
                     }
                 }
@@ -229,6 +251,7 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
     }
 
     private void SetImageView1() {
+        //create imageView for face 1
         if (!bImage1) {
             FrameLayout layout = (FrameLayout) findViewById(R.id.ivCardLayout);
             ImageView ivCard = (ImageView) findViewById(R.id.ivCard);
@@ -241,6 +264,7 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
     }
 
     private void SetImageView2() {
+        //create imageView for face 2
         if (!bImage2) {
             FrameLayout layout2 = (FrameLayout) findViewById(R.id.ivFaceLayout);
             ImageView ivFace = (ImageView) findViewById(R.id.ivFace);
@@ -253,6 +277,7 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
     }
 
     private Uri getUri() {
+            //get Uri of external storage
         String state = Environment.getExternalStorageState();
         if (!state.equalsIgnoreCase(Environment.MEDIA_MOUNTED))
             return MediaStore.Images.Media.INTERNAL_CONTENT_URI;
@@ -260,6 +285,7 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
         return MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
     }
 
+    // get original pth from uri
     public String getAbsolutePath(Uri uri) {
         if (Build.VERSION.SDK_INT >= 19) {
             String arr[] = uri.getLastPathSegment().split(":");
@@ -287,10 +313,15 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
                 return cursor.getString(column_index);
             } else
                 return null;
-       }
+        }
     }
 
+    // used for resizing the image bitmap
+    // parameter to pass : Bitmap image, int maxSize
+    // return resize bitmap
+
     public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+
         int width = image.getWidth();
         int height = image.getHeight();
 
@@ -305,14 +336,22 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
         return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
+    // used to convert string path to Uri
+    //parameter to pass : String path
+    //return Uri
     private Uri getImageUri(String path) {
-         return Uri.fromFile(new File(path));
+        return Uri.fromFile(new File(path));
     }
 
-    //Get bitmap image form path
+    //used for get bitmap image from given path
+    //parameter to pass :String path
+    //return bitmap
+
     private Bitmap decodeFileFromPath(String path) {
-        Uri uri = getImageUri(path);
+
+        Uri uri = getImageUri(path); // convert string path to Uri
         InputStream in = null;
+
         try {
             in = getContentResolver().openInputStream(uri);
 
@@ -325,6 +364,7 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
 
             int scale = 1;
             int inSampleSize = 2048;
+
             if (o.outHeight > inSampleSize || o.outWidth > inSampleSize) {
                 scale = (int) Math.pow(2, (int) Math.round(Math.log(inSampleSize / (double) Math.max(o.outHeight, o.outWidth)) / Math.log(0.5)));
             }
@@ -333,20 +373,23 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
             o2.inSampleSize = scale;
             in = getContentResolver().openInputStream(uri);
             int MAXCAP_SIZE = 512;
-            Bitmap b = getResizedBitmap(BitmapFactory.decodeStream(in, null, o2), MAXCAP_SIZE);
+
+            Bitmap b = getResizedBitmap(BitmapFactory.decodeStream(in, null, o2), MAXCAP_SIZE);  //resizing the bitmap image
             in.close();
 
             return b;
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            e.printStackTrace();  //handle File Not Found Exception
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // handle IO exception
         }
         return null;
     }
 
-    //Rotate Image as per current orientation
+    //Used for rotate image as pe current orientation
+    //parameter to pass : String path
+    // return bitmap
     private Bitmap rotateImage(final String path) {
         Bitmap b = decodeFileFromPath(path);
 
@@ -354,6 +397,7 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
             ExifInterface ei = new ExifInterface(path);
             int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
             Matrix matrix = new Matrix();
+
             switch (orientation) {
                 case ExifInterface.ORIENTATION_ROTATE_90:
                     matrix.postRotate(90);
@@ -379,6 +423,7 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
         return b;
     }
 
+    //Class use for creating a view
     private class MyView extends View {
         Bitmap image = null;
         FaceDetectionResult detectionResult = null;
@@ -451,18 +496,27 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
         }
     }
 
-    //init FaceMatch Engine
+    //its method used for initEngine of face match
     private void initEngine() {
+        //call Sdk  method InitEngine
+        // parameter to pass : FaceCallback callback, int fmin, int fmax, float resizeRate, String modelpath, String weightpath, AssetManager assets
+        // this method will return the integer value
+        //  the return value by initEngine used the identify the particular error
+        // -1 - No key found
+        // -2 - Invalid Key
+        // -3 - Invalid Platform
+        // -4 - Invalid License
 
-        writeFileToPrivateStorage(R.raw.model, "model.prototxt");
+        writeFileToPrivateStorage(R.raw.model, "model.prototxt"); //write fie to private storage
         File modelFile = getApplicationContext().getFileStreamPath("model.prototxt");
         String pathModel = modelFile.getPath();
-        writeFileToPrivateStorage(R.raw.weight, "weight.dat");
+        writeFileToPrivateStorage(R.raw.weight, "weight.dat");    //write file to private storage
         File weightFile = getApplicationContext().getFileStreamPath("weight.dat");
         String pathWeight = weightFile.getPath();
 
         int nRet = FaceLockHelper.InitEngine(this, 30, 800, 1.18f, pathModel, pathWeight, this.getAssets());
         Log.i("facematch", "InitEngine: " + nRet);
+
         if (nRet < 0) {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
             if (nRet == -1) {
@@ -494,6 +548,7 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
     public void onInitEngine(int ret) {
     }
 
+    //call if face detect
     @Override
     public void onLeftDetect(FaceDetectionResult faceResult) {
         if (faceResult != null) {
@@ -533,6 +588,7 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
         calcMatch();
     }
 
+    //call if face detect
     @Override
     public void onRightDetect(FaceDetectionResult faceResult) {
         if (faceResult != null) {
@@ -550,7 +606,7 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
     public void onExtractInit(int ret) {
     }
 
-    // Calculate FaceMatch score
+    //method for calulate the match score
     public void calcMatch() {
         if (image1.getFaceDetectionResult() == null || image2.getFaceDetectionResult() == null) {
             txtScore.setText("Match Score : 0 %");
@@ -563,11 +619,12 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
 
             if (!isEmailSent && face1 != null && face2 != null) {
                 isEmailSent = true;
-                sendResultToServer(AppGeneral.SCAN_RESULT.ACCURA_FM);
+                sendResultToServer(AppGeneral.SCAN_RESULT.ACCURA_FM); //send FaceMatch result to server
             }
         }
     }
 
+    //method for write file in private storage
     public void writeFileToPrivateStorage(int fromFile, String toFile) {
 
         InputStream is = getApplicationContext().getResources().openRawResource(fromFile);
@@ -583,12 +640,13 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
             is.close();
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // handle file not found exception
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace();// handle IO exception
         }
     }
 
+    //method for send FatchMatch result to server
     private void sendResultToServer(String subject) {
 
         subject = subject + " " + txtScore.getText().toString() + "";

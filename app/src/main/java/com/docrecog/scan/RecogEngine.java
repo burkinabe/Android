@@ -52,6 +52,7 @@ public class RecogEngine
 	}
 	public void initEngine(Context context)
 	{
+
 		con = context;
 		getAssetFile(assetNames[0],assetNames[1]);
 		//	String sLicenseKey = "HHEJBFKOLDOADNEAIJFPMPGGDNNAEIFKCNNGDEGJPKCOBMIICGIOIDHEJKIAHEFJIDMIGMFGAHEMBBBNKMFJOILNALFBGKNGIKPKEDLPILDJFCEAEGMFJMIONLLBMIOJJAOCENAJAKCMKJDJNF";

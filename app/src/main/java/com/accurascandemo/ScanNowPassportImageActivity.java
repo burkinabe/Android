@@ -79,7 +79,7 @@ public class ScanNowPassportImageActivity extends BaseActivity implements View.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_passport_image);
 
-        initUi();
+        initUi(); // initialize the UI
     }
 
     private void initUi() {
@@ -133,6 +133,7 @@ public class ScanNowPassportImageActivity extends BaseActivity implements View.O
         AccuraDemoApplication.getInstance().reportToGoogleAnalytics(getString(R.string.launch_screen));
     }
 
+    //handle click of particular view
     @Override
     public void onClick(View view) {
         switch (view.getId()) {

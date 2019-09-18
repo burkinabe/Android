@@ -20,6 +20,7 @@ public class PreviewScreenActivity extends BaseActivity implements View.OnClickL
         findViewById(R.id.tvCancel).setOnClickListener(this);
     }
 
+    //handle click of particular view
     @Override
     public void onClick(View v) {
 

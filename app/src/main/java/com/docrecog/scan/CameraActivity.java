@@ -684,6 +684,8 @@ public class CameraActivity extends Activity implements
                 YuvImage temp = new YuvImage(data, format, width, height, null);
                 ByteArrayOutputStream os = new ByteArrayOutputStream();
                 temp.compressToJpeg(new Rect(0, 0, temp.getWidth(), temp.getHeight()), 100, os);
+
+                //getting original bitmap of scan result
                 Bitmap bmp_org = BitmapFactory.decodeByteArray(os.toByteArray(), 0, os.toByteArray().length);
                 Matrix matrix = new Matrix();
                 matrix.postRotate(mDisplayOrientation);
@@ -696,7 +698,7 @@ public class CameraActivity extends Activity implements
                     //Crop image as per Frame size in landscape mode
                     bmCard = Bitmap.createScaledBitmap(bmp1, 757, 428, false);
                 } else {
-                    //center crop in portrait mode
+                    //Crop image in center crop in portrait mode
                     bmCard = BitmapUtil.centerCrop(bmp1, bmp1.getWidth(), bmp1.getHeight() / 3);
                 }
 
@@ -811,6 +813,7 @@ public class CameraActivity extends Activity implements
 
     ObjectAnimator anim = null;
 
+    //flip the image
     private void flipImage() {
         try {
             mFlipImage.setVisibility(View.VISIBLE);
@@ -1129,6 +1132,7 @@ public class CameraActivity extends Activity implements
         });
     }
 
+    //requesting the camera permission
     public void requestCameraPermission() {
         int currentapiVersion = Build.VERSION.SDK_INT;
         if (currentapiVersion >= Build.VERSION_CODES.M) {

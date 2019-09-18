@@ -82,6 +82,7 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
     private boolean isEmailSent = false;
 
     final private int CAPTURE_IMAGE = 2;
+
     private final ZoomSDK.InitializeCallback mInitializeCallback = new ZoomSDK.InitializeCallback() {
         @Override
         public void onCompletion(boolean successful) {
@@ -131,22 +132,27 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pan_aadhar_result);
 
-        initEngine();
+        initEngine(); //initialize the engine
+
+        //call zoom connect API
         zoomConnectedAPI = new ZoomConnectedAPI(ZoomConnectedConfig.AppToken, getApplicationContext().getPackageName(), this);
 
-        getDataFromIntent(getIntent());
+        getDataFromIntent(getIntent()); //getting result data form initent
+
         path = Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES).getAbsolutePath() + "/IMG_0060.jpeg";
         initUI();
     }
 
     private void getDataFromIntent(Intent intent) {
+        //get result dat from intent and set to particular variable
         panAadharCardDetail = intent.getParcelableExtra("panAadharDetail");
         card_type = intent.getIntExtra("card_type", 0);
         imageFileUri = intent.getStringExtra("imageFile");
     }
 
     private void initUI() {
+        //initialize the UI
         scrollView = findViewById(R.id.scrollView);
         ivUserProfile = findViewById(R.id.ivUserProfile);
         ivUserProfile2 = findViewById(R.id.ivUserProfile2);
@@ -191,10 +197,11 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
             tvSave.setVisibility(View.GONE);
             tvFM.setVisibility(View.GONE);
         }
-        setData();
+        setData(); //set the result data
     }
 
     private void setData() {
+        //set the result data
         scanData = new ScanData();
         imageFile = new File(imageFileUri);
 
@@ -230,7 +237,7 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
 
         llAddress.setVisibility(View.GONE);
 
-        if (card_type == 2) {
+        if (card_type == 2) {  //set pan card data
             llLastName.setVisibility(View.VISIBLE);
             Glide.with(this).load(imageFile).into(ivScanImage);
             tvDocNoTitle.setText(getString(R.string.pan_card_no));
@@ -242,7 +249,7 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
                 tvLastName.setText(panAadharCardDetail.second_name);
                 scanData.setLastName(panAadharCardDetail.second_name);
             }
-        } else if (card_type == 3) {
+        } else if (card_type == 3) { //set Aadhar card data
             llLastName.setVisibility(View.GONE);
             Glide.with(this).load(imageFile).into(ivScanImage);
             tvDocNoTitle.setText(getString(R.string.aadhaar_card_no));
@@ -263,10 +270,12 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
             }
         }
 
+        //send MRZ result to server
+        //parameter to pass :  String subject
         sendResultToServer(AppGeneral.SCAN_RESULT.ACCURA_MRZ);
     }
 
-    //target to save
+    //set image in target view
     private SimpleTarget<Bitmap> getGlideTarget() {
         SimpleTarget<Bitmap> target = new SimpleTarget<Bitmap>() {
             @Override
@@ -286,18 +295,19 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
         return target;
     }
 
+    //handle click of different view
     @Override
     public void onClick(View view) {
         isEmailSent = false;
         isLiveness = false;
         isFaceMatch = false;
         switch (view.getId()) {
-            case R.id.tvSave:
+            case R.id.tvSave:  // handle click of liveness
                 //Start liveness
                 isLiveness = true;
                 launchZoomScanScreen();
                 break;
-            case R.id.tvFM:
+            case R.id.tvFM: // handle click of FaceMatch
                 //Start Facematch
                 isFaceMatch = true;
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -343,12 +353,13 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
     @Override
     protected void onStart() {
         super.onStart();
-        initializeZoom();
+        initializeZoom(); ///initialize of zooming
     }
 
     private void initializeZoom() {
         // Visit https://dev.zoomlogin.com/zoomsdk/#/account to retrieve your app token
         // Replace BuildConfig.ZOOM_APP_TOKEN below with your app token
+
         String zoomAppToken = getString(R.string.zoom_key);
         ZoomSDK.setFacemapEncryptionKey(ZoomConnectedConfig.PublicKey);
         ZoomSDK.initialize(
@@ -519,6 +530,9 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
         });
     }
 
+    //used for rotate image of given path
+    //parameter to pass : String path
+    // return bitmap
     private Bitmap rotateImage(final String path) {
 
         Bitmap b = decodeFileFromPath(path);
@@ -553,6 +567,8 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
     }
 
     //Get bitmap image form path
+    //parameter to pass : String path
+    // return Bitmap
     private Bitmap decodeFileFromPath(String path) {
         Uri uri = getImageUri(path);
         InputStream in = null;
@@ -590,10 +606,16 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
         return null;
     }
 
+    //get image uwi from given string path
+    //parameter to pass : String path
+    // return Uri
     private Uri getImageUri(String path) {
         return Uri.fromFile(new File(path));
     }
 
+    //Used for resizing bitmap
+    //parameter to pass : Bitmap image, int maxSize
+    // return bitmap
     public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
         int width = image.getWidth();
         int height = image.getHeight();
@@ -609,6 +631,8 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
         return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
+    //method for setting liveness data
+    //parameter to pass : Livenessdata
     private void setLivenessData(LivenessData livenessData) {
         tvLivenessScore.setText(livenessData.livenessScore);
         tvRetryFeedbackSuggestion.setText(livenessData.retryFeedbackSuggestion);
@@ -617,8 +641,14 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
         scanData.setRetryFeedbackSuggestion(livenessData.retryFeedbackSuggestion);
         llLiveness.setVisibility(View.VISIBLE);
         tvSave.setVisibility(View.GONE);
+
+        //send liveness data tom server
+        //parameter to pass : String subject
         sendResultToServer(AppGeneral.SCAN_RESULT.ACCURA_SCAN);
     }
+
+    //method for setting authentication data
+    //parameter to pass : AuthenticationData
 
     private void setAuthData(AuthenticationData authenticationData) {
         tvAuth.setText(String.valueOf(authenticationData.authenticated));
@@ -657,6 +687,7 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
         }.execute();
     }
 
+    //checked for user permission
     private boolean checkReadWritePermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
@@ -795,6 +826,7 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
         });
     }
 
+    //checking liveness data
     private void liveness(final ZoomVerificationResult zoomVerificationResult) {
         showProgressDialog();
         byte[] zoomFacemap = zoomVerificationResult.getFaceMetrics().getZoomFacemap();
@@ -810,7 +842,7 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
                             @Override
                             public void run() {
                                 //Liveness complete successfully
-                                setLivenessData(livenessData);
+                                setLivenessData(livenessData);  //setting liveness data
                             }
                         });
                     } else {
@@ -823,8 +855,19 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
         });
     }
 
+    //initialize the engine
     private void initEngine() {
-        writeFileToPrivateStorage(R.raw.model, "model.prototxt");
+
+        //call Sdk  method InitEngine
+        // parameter to pass : FaceCallback callback, int fmin, int fmax, float resizeRate, String modelpath, String weightpath, AssetManager assets
+        // this method will return the integer value
+        //  the return value by initEngine used the identify the particular error
+        // -1 - No key found
+        // -2 - Invalid Key
+        // -3 - Invalid Platform
+        // -4 - Invalid License
+
+        writeFileToPrivateStorage(R.raw.model, "model.prototxt"); //write file to private storage
         File modelFile = getApplicationContext().getFileStreamPath("model.prototxt");
         String pathModel = modelFile.getPath();
         writeFileToPrivateStorage(R.raw.weight, "weight.dat");
@@ -865,6 +908,7 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
     public void onInitEngine(int ret) {
     }
 
+    // call if face detect
     @Override
     public void onLeftDetect(FaceDetectionResult faceResult) {
         leftResult = null;
@@ -906,6 +950,7 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
         calcMatch();
     }
 
+    //call if face detect
     @Override
     public void onRightDetect(FaceDetectionResult faceResult) {
         if (faceResult != null) {
@@ -932,6 +977,9 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
             if (!isLiveness && !isEmailSent) {
                 isEmailSent = true;
                 // sendResultToServer(AppGeneral.SCAN_RESULT.ACCURA_SCAN);
+
+                //send faceMatch result to server
+                //parameter to pass : String subject
                 sendResultToServer(AppGeneral.SCAN_RESULT.ACCURA_FM);
             }
         }
@@ -1019,6 +1067,7 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
             frontImage = BitmapFactory.decodeFile(filePath);
         }
 
+        //sending  result to server
         SendResultToServer.getInstance().send(this,
                 frontImage,
                 RecogEngine.g_recogResult.docBackBitmap,

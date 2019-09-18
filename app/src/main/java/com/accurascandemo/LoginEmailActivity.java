@@ -68,6 +68,7 @@ public class LoginEmailActivity extends BaseActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_email);
 
+        //calling the zoom connect API
         zoomConnectedAPI = new ZoomConnectedAPI(ZoomConnectedConfig.AppToken, getApplicationContext().getPackageName(), this);
 
         etEmail = findViewById(R.id.etEmail);
@@ -95,6 +96,7 @@ public class LoginEmailActivity extends BaseActivity implements View.OnClickList
         finish();
     }
 
+    //hanlde click of view
     @Override
     public void onClick(View view) {
 

@@ -41,7 +41,7 @@ public class BaseActivity extends AppCompatActivity {
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 //            getWindow().setStatusBarColor(getResources().getColor(R.color.red));
 //        }
-        dbHelper = new DBHelper(this);
+        dbHelper = new DBHelper(this); //initialize the DBhelper class
         AppGeneral.appContext = getApplicationContext();
         initializeProgressDialog();
     }

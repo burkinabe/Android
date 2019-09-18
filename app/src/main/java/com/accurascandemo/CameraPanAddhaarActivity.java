@@ -87,6 +87,7 @@ public class CameraPanAddhaarActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera_pan_addhaar);
 
+        //fetch the current orientation
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             isLandScape = true;
         } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -251,6 +252,9 @@ public class CameraPanAddhaarActivity extends BaseActivity {
         super.onConfigurationChanged(newConfig);
     }
 
+    //used for conver bitmap to file
+    //parameter to pass : bitmap
+    //return string path
     private String bitmapToFile(Bitmap bitmap) {
         Bitmap croppedBmp;
         frameBitmap = bitmap;
@@ -296,6 +300,8 @@ public class CameraPanAddhaarActivity extends BaseActivity {
         return file.getAbsolutePath();
     }
 
+    // Used for rotate the image
+    //parameter to pass : String path
     private void rotateBitmap(String path) {
         ExifInterface exif;
         Bitmap taken_image = null;

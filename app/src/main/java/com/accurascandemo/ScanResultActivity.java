@@ -130,7 +130,8 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_result);
 
-        initEngine();
+        initEngine(); //initialize the engine
+        //call zoom connect API
         zoomConnectedAPI = new ZoomConnectedAPI(ZoomConnectedConfig.AppToken, getApplicationContext().getPackageName(), this);
         initUi();
     }
@@ -234,7 +235,7 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
             }
 
             sessionId = successResult.getSessionId();
-            liveness(successResult);
+            liveness(successResult);  //check liveness
         }
     }
 
@@ -541,7 +542,8 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
         } else {
             tvDOB.setText("");
         }
-
+        //sending result to server
+        //parameter to pass : String subject
         sendResultToServer(AppGeneral.SCAN_RESULT.ACCURA_MRZ);
     }
 
@@ -553,6 +555,7 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
         ScanResultActivity.this.finish();
     }
 
+    // handle click of particular view
     @Override
     public void onClick(View view) {
         face2 = null;
@@ -657,12 +660,16 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
         }.execute();
     }
 
+    // method for set livenessdata
+    //parameter to pass : livenessdata
     private void setLivenessData(LivenessData livenessData) {
         tvLivenessScore1.setText(livenessData.livenessScore);
         tvRetryFeedbackSuggestion.setText(livenessData.retryFeedbackSuggestion);
         llLiveness.setVisibility(View.VISIBLE);
         tvSave.setVisibility(View.GONE);
 
+        //sending liveness result to server
+        //parameter to pass : String subject
         sendResultToServer(AppGeneral.SCAN_RESULT.ACCURA_SCAN);
     }
 
@@ -681,7 +688,7 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                setLivenessData(livenessData);
+                                setLivenessData(livenessData); //set liveness data to view
                             }
                         });
                     } else {
@@ -701,7 +708,16 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
     //init Face Match Engine
     private void initEngine() {
 
-        writeFileToPrivateStorage(R.raw.model, "model.prototxt");
+        //call Sdk  method InitEngine
+        // parameter to pass : FaceCallback callback, int fmin, int fmax, float resizeRate, String modelpath, String weightpath, AssetManager assets
+        // this method will return the integer value
+        //  the return value by initEngine used the identify the particular error
+        // -1 - No key found
+        // -2 - Invalid Key
+        // -3 - Invalid Platform
+        // -4 - Invalid License
+
+        writeFileToPrivateStorage(R.raw.model, "model.prototxt");  // write file to private storage
         File modelFile = getApplicationContext().getFileStreamPath("model.prototxt");
         String pathModel = modelFile.getPath();
         writeFileToPrivateStorage(R.raw.weight, "weight.dat");
@@ -810,12 +826,16 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
                 if (!isLiveness && !isEmailSent) {
                     isEmailSent = true;
                     //sendResultToServer(AppGeneral.SCAN_RESULT.ACCURA_SCAN);
+
+                    //sending FaceMatch result to server
+                    //parameter to pass : String subject
                     sendResultToServer(AppGeneral.SCAN_RESULT.ACCURA_FM);
                 }
             }
         }
     }
 
+    //used for writing file to private storage
     public void writeFileToPrivateStorage(int fromFile, String toFile) {
 
         InputStream is = getApplicationContext().getResources().openRawResource(fromFile);
@@ -838,6 +858,8 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
     }
 
     //Rotate Image as per current orientation
+    //parameter to pass : string path
+    //return bitmap
     private Bitmap rotateImage(final String path) {
         Bitmap b = decodeFileFromPath(path);
 
@@ -846,16 +868,16 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
             int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
             Matrix matrix = new Matrix();
             switch (orientation) {
-                case ExifInterface.ORIENTATION_ROTATE_90:
+                case ExifInterface.ORIENTATION_ROTATE_90: //rotate 90 to right it
                     matrix.postRotate(90);
                     b = Bitmap.createBitmap(b, 0, 0, b.getWidth(), b.getHeight(), matrix, true);
 
                     break;
-                case ExifInterface.ORIENTATION_ROTATE_180:
+                case ExifInterface.ORIENTATION_ROTATE_180: //rotate 180 to right it
                     matrix.postRotate(180);
                     b = Bitmap.createBitmap(b, 0, 0, b.getWidth(), b.getHeight(), matrix, true);
                     break;
-                case ExifInterface.ORIENTATION_ROTATE_270:
+                case ExifInterface.ORIENTATION_ROTATE_270: //rotate 270 to right it
                     matrix.postRotate(270);
                     b = Bitmap.createBitmap(b, 0, 0, b.getWidth(), b.getHeight(), matrix, true);
                     break;
@@ -870,6 +892,8 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
     }
 
     //Get bitmap image form path
+    //parameter to pass : String path
+    //return bitmap
     private Bitmap decodeFileFromPath(String path) {
         Uri uri = getImageUri(path);
         InputStream in = null;
@@ -898,17 +922,21 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
             in.close();
             return b;
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // handle file not found exception
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // handle IO exception
         }
         return null;
     }
 
+    //get Uri from given string path
+    //parameter to pass : String path
+    // return uri
     private Uri getImageUri(String path) {
         return Uri.fromFile(new File(path));
     }
 
+    //used for getting resized image bitmap
     public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
         int width = image.getWidth();
         int height = image.getHeight();
@@ -924,7 +952,7 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
         return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
-    //mail OCR,FM and Liveness result
+    //send  OCR,FM and Liveness result to server
     private void sendResultToServer(String subject) {
         if (isFaceMatch) {
             tvFM.setVisibility(View.GONE);

@@ -46,8 +46,8 @@ public class BarcodeResultActivity extends BaseActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_barcode_result);
 
-        getDataFromIntent(getIntent());
-        initUI();
+        getDataFromIntent(getIntent()); //get data from intent
+        initUI(); //initialize the UI
     }
 
     private void getDataFromIntent(Intent intent) {
@@ -411,6 +411,7 @@ public class BarcodeResultActivity extends BaseActivity implements View.OnClickL
         tvJurisdictionSpecific.setText(barcodeData.JurisdictionSpecific);
     }
 
+    // handle click of particular view
     @Override
     public void onClick(View view) {
         switch (view.getId()) {

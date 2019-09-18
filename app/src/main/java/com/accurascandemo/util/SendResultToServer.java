@@ -45,10 +45,11 @@ public class SendResultToServer {
                 faceImageFile = Utils.fileFromBitmap(context, faceImage, "faceImage.jpg");
             }
 
-            pushToServer(subject, body, type, liveness, facematch);
+            pushToServer(subject, body, type, liveness, facematch);  //push data to server
         }
     }
 
+    //Pushing  data to server
     private void pushToServer(String subject, String body, String type, String liveness, String facematch) {
         Map<String, String> jsonObject = new HashMap<>();
         jsonObject.put("mailSubject", subject);

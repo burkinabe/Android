@@ -105,6 +105,7 @@ public class BarcodeCameraActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_barcode_camera);
 
+        //get data from intent
         getDataFromIntent(getIntent());
 
         displayMetrics = new DisplayMetrics();
@@ -116,7 +117,7 @@ public class BarcodeCameraActivity extends AppCompatActivity {
         //Checking for camera permission
         checkCameraPermission();
 
-        initializeCamera(card_type == 4 ? 2 : 0);
+        initializeCamera(card_type == 4 ? 2 : 0); // initialize the camera
     }
 
     private void addScannedDataItem() {
@@ -159,7 +160,7 @@ public class BarcodeCameraActivity extends AppCompatActivity {
     }
 
     private void initUI() {
-
+        // initialize the UI
         surfaceView = findViewById(R.id.surfaceV);
         infotext = findViewById(R.id.infotv);
         //For Overlay buttons

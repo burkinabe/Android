@@ -84,6 +84,7 @@ public class DisplayAllDataActivity extends BaseActivity implements View.OnClick
     }
 
     private void initUi() {
+        //initialize the UI
         findViewById(R.id.ivBack).setOnClickListener(this);
         livenessData = getIntent().getParcelableExtra(AppGeneral.LivenessData);
         authenticationData = getIntent().getParcelableExtra(AppGeneral.AuthenticationData);
@@ -142,6 +143,7 @@ public class DisplayAllDataActivity extends BaseActivity implements View.OnClick
     }
 
     private void setData() {
+        //set data in view
         tvLivenessResult.setText(livenessData.livenessResult);
         tvRetryFeedbackSuggestion.setText(livenessData.retryFeedbackSuggestion);
         tvAuth.setText(String.valueOf(authenticationData.authenticated));
@@ -182,6 +184,7 @@ public class DisplayAllDataActivity extends BaseActivity implements View.OnClick
         }
     }
 
+    //handle click of view
     @Override
     public void onClick(View v) {
 

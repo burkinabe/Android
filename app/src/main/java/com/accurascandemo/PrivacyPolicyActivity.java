@@ -14,7 +14,7 @@ public class PrivacyPolicyActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_privacy_policy);
-        setView();
+        setView(); //set privacy policy
     }
 
     @SuppressLint("SetJavaScriptEnabled")
