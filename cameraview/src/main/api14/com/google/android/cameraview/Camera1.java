@@ -22,10 +22,12 @@ import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.support.v4.util.SparseArrayCompat;
+
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
+
+import androidx.collection.SparseArrayCompat;
 
 import java.util.List;
 import java.util.Set;

@@ -4,8 +4,8 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
@@ -13,7 +13,6 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-import com.accurascandemo.R;
 import com.accurascandemo.util.AlertDialogAbstract;
 import com.accurascandemo.util.AppGeneral;
 import com.accurascandemo.util.DBHelper;
