@@ -38,7 +38,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.accurascandemo.util.AppGeneral;
-import com.accurascandemo.util.SendResultToServer;
 import com.accurascandemo.view.CustomTextView;
 import com.docrecog.scan.FileUtils;
 import com.inet.facelock.callback.FaceCallback;
@@ -604,10 +603,7 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
             String ss = nf.format(score * 100);
             txtScore.setText("Match Score : " + ss + " %");
 
-            if (!isEmailSent && face1 != null && face2 != null) {
-                isEmailSent = true;
-                sendResultToServer(AppGeneral.SCAN_RESULT.ACCURA_FM); //send FaceMatch result to server
-            }
+
         }
     }
 
@@ -631,25 +627,5 @@ public class FaceMatchActivity extends Activity implements FaceCallback {
         } catch (IOException e) {
             e.printStackTrace();// handle IO exception
         }
-    }
-
-    //method for send FatchMatch result to server
-    private void sendResultToServer(String subject) {
-
-        subject = subject + " " + txtScore.getText().toString() + "";
-        String body = txtScore.getText().toString();
-        String liveness = "False";
-        String facematch = "True";
-        String type = "";
-
-        SendResultToServer.getInstance().send(this,
-                face1,
-                face2,
-                null,
-                subject,
-                body,
-                type,
-                liveness,
-                facematch);
     }
 }

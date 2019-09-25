@@ -41,7 +41,6 @@ import com.accurascandemo.model.ScanData;
 import com.accurascandemo.util.AlertDialogAbstract;
 import com.accurascandemo.util.AppGeneral;
 import com.accurascandemo.util.ParsedResponse;
-import com.accurascandemo.util.SendResultToServer;
 import com.accurascandemo.util.Utils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
@@ -270,9 +269,7 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
             }
         }
 
-        //send MRZ result to server
-        //parameter to pass :  String subject
-        sendResultToServer(AppGeneral.SCAN_RESULT.ACCURA_MRZ);
+
     }
 
     //set image in target view
@@ -642,9 +639,7 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
         llLiveness.setVisibility(View.VISIBLE);
         tvSave.setVisibility(View.GONE);
 
-        //send liveness data tom server
-        //parameter to pass : String subject
-        sendResultToServer(AppGeneral.SCAN_RESULT.ACCURA_SCAN);
+
     }
 
     //method for setting authentication data
@@ -974,14 +969,7 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
             match_score *= 100.0f;
             tvFaceMatchScore1.setText(Float.toString(match_score));
             llFaceMatchScore.setVisibility(View.VISIBLE);
-            if (!isLiveness && !isEmailSent) {
-                isEmailSent = true;
-                // sendResultToServer(AppGeneral.SCAN_RESULT.ACCURA_SCAN);
 
-                //send faceMatch result to server
-                //parameter to pass : String subject
-                sendResultToServer(AppGeneral.SCAN_RESULT.ACCURA_FM);
-            }
         }
     }
 
@@ -1007,76 +995,5 @@ public class PanAadharResultActivity extends BaseActivity implements View.OnClic
     }
 
 
-    //mail OCR,FM and Liveness result
-    private void sendResultToServer(String subject) {
-        boolean isPanCard = false;
-        if (isFaceMatch) {
-            tvFM.setVisibility(View.GONE);
-        }
-        scrollView.smoothScrollTo(0, 0);
 
-        String mrz = "";
-        if (tvDocumentType.getText().toString().contains("PAN CARD")) {
-            isPanCard = true;
-            mrz = "Document: " + tvDocumentType.getText() + " <br/>"
-                    + "Last Name: " + tvLastName.getText() + " <br/>"
-                    + "First Name: " + tvFirstName.getText() + " <br/>"
-                    + "Pan Card No: " + tvDocNo.getText() + " <br/>"
-                    + "Country: " + tvCountry.getText() + " <br/>"
-                    + "Date of Birth: " + tvDOB.getText() + " <br/>";
-        } else {
-            mrz = "Document: " + tvDocumentType.getText() + " <br/>"
-                    + "Last Name: " + tvLastName.getText() + " <br/>"
-                    + "First Name: " + tvFirstName.getText() + " <br/>"
-                    + "Aadhar Card No: " + tvDocNo.getText() + " <br/>"
-                    + "Country: " + tvCountry.getText() + " <br/>"
-                    + "Date of Birth: " + tvDOB.getText() + " <br/>"
-                    + "Sex: " + tvSex.getText() + " <br/>"
-                    + "Address: " + tvAddress.getText() + " <br/>"
-                    + "Authenticated: " + tvAuth.getText() + " <br/>";
-            // + "Match Score: " + tvMatchScore.getText() + " <br/>"
-        }
-
-        String title = isPanCard ? "Android - Test PAN CARD" : "Android - Test AADHAAR CARD";
-        String body = "";
-        String liveness = "False";
-        String facematch = "False";
-        String type = isPanCard ? "Pan Card" : "Aadhar Card";
-
-        if (subject.equals(AppGeneral.SCAN_RESULT.ACCURA_FM)) {
-            subject = title + " " + tvFaceMatchScore1.getText().toString() + "%";
-            body = "FaceMatch Score: " + tvFaceMatchScore1.getText() + " <br/>"
-                    + mrz;
-            facematch = "True";
-            liveness = "False";
-        } else if (subject.equals(AppGeneral.SCAN_RESULT.ACCURA_MRZ)) {
-            subject = title + " " + tvFirstName.getText().toString();
-            body = mrz;
-        } else {
-            subject = title + " " + tvFirstName.getText().toString();
-            body = "FaceMatch Score: " + tvFaceMatchScore1.getText() + " <br/>"
-                    + "Liveness Score: " + tvLivenessScore.getText() + " <br/>"
-                    + mrz;
-            facematch = "True";
-            liveness = "True";
-        }
-
-        Bitmap frontImage = null;
-        if (imageFile.exists()) {
-            String filePath = imageFile.getPath();
-            frontImage = BitmapFactory.decodeFile(filePath);
-        }
-
-        //sending  result to server
-        SendResultToServer.getInstance().send(this,
-                frontImage,
-                RecogEngine.g_recogResult.docBackBitmap,
-                face2,
-                subject,
-                body,
-                type,
-                liveness,
-                facematch
-        );
-    }
 }

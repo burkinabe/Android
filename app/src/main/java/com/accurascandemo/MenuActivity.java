@@ -27,24 +27,6 @@ public class MenuActivity extends AppCompatActivity {
         CustomMenuButton btnFace = new CustomMenuButton(this, R.id.btnAccuraFace);
         CustomMenuButton btnScan = new CustomMenuButton(this, R.id.btnAccuraScan);
 
-        Button btnVisitAccuraScan = findViewById(R.id.btnVisitAccuraScan);
-        Button btnEmailUs = findViewById(R.id.btnEmailUs);
-        btnVisitAccuraScan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.text_website)));
-                startActivity(browserIntent);
-            }
-        });
-        btnEmailUs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_SENDTO);
-                intent.setType("text/plain");
-                intent.setData(Uri.parse("mailto:connect@accurascan.com"));
-                startActivity(Intent.createChooser(intent, "Send Email"));
-            }
-        });
 
         btnOCR.setBackgroundResource(R.drawable.btn_bg_red);
 

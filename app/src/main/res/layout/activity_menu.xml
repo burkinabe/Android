@@ -59,36 +59,7 @@
             android:textSize="15dp"
             app:typeface="ALLER_STD_REG" />
 
-        <LinearLayout
-            android:layout_marginBottom="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingStart="25dp"
-            android:paddingEnd="25dp">
 
-            <Button
-                android:id="@+id/btnVisitAccuraScan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_bg_red"
-                android:text="Visit Accura Scan"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="17dp" />
-
-            <Button
-                android:id="@+id/btnEmailUs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/btn_bg_red"
-                android:text="Email Us"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="17dp" />
-
-        </LinearLayout>
 
     </LinearLayout>
 

@@ -36,7 +36,7 @@ import com.accurascandemo.model.ScanData;
 import com.accurascandemo.util.AlertDialogAbstract;
 import com.accurascandemo.util.AppGeneral;
 import com.accurascandemo.util.ParsedResponse;
-import com.accurascandemo.util.SendResultToServer;
+
 import com.docrecog.scan.CameraActivity;
 import com.docrecog.scan.RecogEngine;
 import com.facetec.zoom.sdk.ZoomAuditTrailType;
@@ -541,9 +541,7 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
         } else {
             tvDOB.setText("");
         }
-        //sending result to server
-        //parameter to pass : String subject
-        sendResultToServer(AppGeneral.SCAN_RESULT.ACCURA_MRZ);
+
     }
 
     @Override
@@ -667,9 +665,7 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
         llLiveness.setVisibility(View.VISIBLE);
         tvSave.setVisibility(View.GONE);
 
-        //sending liveness result to server
-        //parameter to pass : String subject
-        sendResultToServer(AppGeneral.SCAN_RESULT.ACCURA_SCAN);
+
     }
 
     private void liveness(final ZoomVerificationResult zoomVerificationResult) {
@@ -822,14 +818,7 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
                 llFaceMatchScore1.setVisibility(View.VISIBLE);
                 match_score *= 100.0f;
                 tvFaceMatchScore1.setText(Float.toString(match_score));
-                if (!isLiveness && !isEmailSent) {
-                    isEmailSent = true;
-                    //sendResultToServer(AppGeneral.SCAN_RESULT.ACCURA_SCAN);
 
-                    //sending FaceMatch result to server
-                    //parameter to pass : String subject
-                    sendResultToServer(AppGeneral.SCAN_RESULT.ACCURA_FM);
-                }
             }
         }
     }
@@ -951,64 +940,5 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
         return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
-    //send  OCR,FM and Liveness result to server
-    private void sendResultToServer(String subject) {
-        if (isFaceMatch) {
-            tvFM.setVisibility(View.GONE);
-        }
-        scrollView.smoothScrollTo(0, 0);
 
-        String mrz = "Document: " + tvDocumentType.getText() + " <br/>"
-                + "Last Name: " + tvLastName.getText() + " <br/>"
-                + "First Name: " + tvFirstName.getText() + " <br/>"
-                + "Document No: " + tvPassportNo.getText() + " <br/>"
-                + "Document Check Number: " + tvDocumentNoCheck.getText() + " <br/>"
-                + "Country: " + tvCountry.getText() + " <br/>"
-                + "Nationality: " + tvNationality.getText() + " <br/>"
-                + "Sex: " + tvSex.getText() + " <br/>"
-                + "Date of Birth: " + tvDOB.getText() + " <br/>"
-                + "Birth Check Number: " + tvDOBCheck.getText() + " <br/>"
-                + "Date of Expiry: " + tvDateOfExpiry.getText() + " <br/>"
-                + "Expiration Check Number: " + tvDateOfExpiryCheck.getText() + " <br/>"
-                + "Other ID: " + tvOtherId.getText() + " <br/>"
-                + "Other ID Check: " + tvOtherIdCheck.getText() + " <br/>"
-                + "Second Row Check Number: " + tvSecondRowCheckNumber.getText() + "  <br/>"
-                + "Result: " + tvRet.getText() + " <br/>";
-
-        String body = "";
-        String liveness = "False";
-        String facematch = "False";
-        String type = "MRZ";
-
-        if (subject.equals(AppGeneral.SCAN_RESULT.ACCURA_FM)) {
-            subject = subject + " " + tvFirstName.getText().toString() + "";
-            body = "FaceMatch Score: " + tvFaceMatchScore1.getText() + " <br/>"
-                    + mrz;
-            facematch = "True";
-            liveness = "False";
-
-        } else if (subject.equals(AppGeneral.SCAN_RESULT.ACCURA_MRZ)) {
-            subject = subject + " " + tvFirstName.getText().toString();
-            body = mrz;
-
-        } else {
-            subject = subject + " " + tvFirstName.getText().toString();
-            body = "FaceMatch Score: " + tvFaceMatchScore1.getText() + " <br/>"
-                    + "Liveness Score: " + tvLivenessScore1.getText() + " <br/>"
-                    + mrz;
-            liveness = "True";
-            facematch = "True";
-        }
-
-        SendResultToServer.getInstance().send(this,
-                RecogEngine.g_recogResult.docFrontBitmap,
-                RecogEngine.g_recogResult.docBackBitmap,
-                face2,
-                subject,
-                body,
-                type,
-                liveness,
-                facematch
-        );
-    }
 }

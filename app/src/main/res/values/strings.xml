@@ -36,7 +36,7 @@
     <!--Postfix Url-->
 
     <!--Login Param-->
-    <string name="header_default_key">Qtm@1234</string>
+    <string name="header_default_key">1234</string>
     <string name="api">https://accurascan.com/v2/api</string>
     <string name="enrollment_delete">enrollment/%s</string>
     <string name="authenticate">authenticate</string>
@@ -65,7 +65,7 @@
     <string name="accura_ocr_desp"><![CDATA[Recognizes Passport & ID MRZ. Pan & Aadhaar Cards India, USA DL and All Barcodes. Works Ofﬂine]]></string>
     <string name="accura_face">ACCURA FACE MATCH</string>
     <string name="accura_face_desp"><![CDATA[AI & ML Based Powerful Face Detection & Recognition Solution. 1:1 and 1:N. Works Ofﬂine]]></string>
-    <string name="accura_scan">ACCURA SCAN</string>
+    <string name="accura_scan">ACCURA AUTHENTICATION</string>
     <string name="accura_scan_desp"><![CDATA[eKYC and Digital Customer On-Boarding & Real Time Face Biometrics with Zoom Certified Liveness Detection for Real Time User Authentication]]></string>
     <string name="accura_upload">Upload Face Image</string>
     <string name="accura_help"><![CDATA[Available in Mobile and Web SDK / API \n Try it now]]></string>
@@ -104,7 +104,7 @@
     <string name="api_contact_us">api/contactus</string>
     <string name="status_code_success">200</string>
 
-    <string name="text_website">https://www.accurascan.com</string>
+    <string name="text_website">https://accurascan.com</string>
     <string name="text_linkedin_link">https://sg.linkedin.com/in/accurascan</string>
     <string name="text_fb_link">https://www.facebook.com/AccuraScan/</string>
     <string name="text_twitter_link">https://twitter.com/AccuraScan</string>
@@ -179,7 +179,7 @@
     <string name="document_discriminator">Document Discriminator</string>
     <string name="name_prefix">Name Prefix</string>
     <string name="name_suffix">Name Suffix</string>
-    <string name="api_key">1544605430AuefLvgk7yWX4nnApjO3f90MRARt9dkmJ4EQFVL7</string>
+    <string name="api_key">{YOUR_API_KEY}</string>
     <string name="nationality">Nationality</string>
     <string name="usa_dl_result">USA DL Result</string>
     <string name="PDF417_Barcode">PDF417 Barcode</string>
